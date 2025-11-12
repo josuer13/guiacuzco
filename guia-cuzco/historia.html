@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guía Cuzco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+      .nav-link:hover {
+        background-color: #f1f1f1
+      }
+      .nav-link.active:hover {
+        background-color: #0b5ed7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-shrink-0 bg-light p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Guía Cuzco</span>
+      </a>
+      <hr>
+
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="index.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-house-door-fill me-3"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <a href="sitios.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-bank2 me-3"></i> Sitios turísticos
+          </a>
+        </li>
+        <li>
+          <a href="platos.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-egg-fried me-3"></i> Restaurantes
+          </a>
+        </li>
+        <li>
+          <a href="historia.html" class="nav-link active">
+            <i class="bi bi-book-fill me-3"></i> Historia
+          </a>
+        </li>
+        <li>
+          <a href="reseñas.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-star-fill me-3"></i> Reseñas
+          </a>
+        </li>
+
+        <hr>
+
+        <li>
+          <a href="#" class="nav-link link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-3"></i> Perfil
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">Mis reseñas</a></li>
+            <li><a class="dropdown-item" href="#">Configuración</a></li>
+            <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="mt-auto pt-3 d-flex justify-content-center gap-2">
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+          Crear Cuenta
+        </a>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">
+          Iniciar Sesión
+        </button>
+      </div>
+
+
+    </div>
+
+<main class="flex-grow-1 d-flex justify-content-center align-items-center p-0">
+ <main class="flex-grow-1 p-0">
+
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+    <h1>Historia de Cuzco</h1>
+    <p>
+      Conocida como la capital del Imperio Inca, Cuzco fue el centro político, militar y cultural 
+      más importante de los Andes. Tras la llegada de los españoles, la ciudad se transformó en un 
+      punto de encuentro entre dos mundos, dejando una mezcla única de estilos y tradiciones.
+    </p>
+    <img src="img/catedral.JPG" style="height: 350px; width: auto;"
+         alt="Catedral del Cuzco" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <!-- Origen -->
+  <section class="py-5 mx-auto">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-6">
+
+          <h2>Origen del Cuzco</h2>
+
+          <p>
+            Cuzco fue fundada por Manco Cápac, según la leyenda, hijo del dios Sol. Desde sus inicios 
+            se consolidó como el centro del Tahuantinsuyo, reuniendo poder, cultura y religión.
+          </p>
+
+          <p>
+            Todo comenzó como un simple asentamiento en un valle fértil, rodeado de montañas y ríos.
+            La ciudad creció con planificación urbana, templos y plazas, consolidándose como corazón del imperio.
+          </p>
+
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-4">
+          <img src="img/valle-sagrado.jpg" class="img-fluid rounded shadow" alt="Referencia Origen Cuzco" style="height: 250px; width: auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo vivían -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2>Cómo vivían</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <img src="img/vivienda-inca.jpg" class="card-img-top" alt="Vivienda Inca" style="height: 410px; width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Vivienda</h5>
+              <hr>
+              <p class="card-text">
+                Casas de piedra con techos de ichu (paja), una sola habitación rectangular con nichos en las paredes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <img src="img/alimentacion.jpg" class="card-img-top" alt="Alimentación Inca" style="height: 410px; width: auto; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Alimentación</h5>
+              <hr>
+              <p class="card-text">
+                Papas, maíz, quinua, carne de llama y cuy. La chicha de jora era la bebida ceremonial principal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+  <div class="container">
+    <h2>Lista de los Incas</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- 1. Manco Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/manco-capac.jpg" class="card-img-top" alt="Manco Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Manco Cápac</h5>
+            <hr>
+            <p class="card-text">Fundador del Imperio Inca. Considerado hijo del Sol.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Sinchi Roca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/sinchi-roca.jpg" class="card-img-top" alt="Sinchi Roca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sinchi Roca</h5>
+            <hr>
+            <p class="card-text">Hijo de Manco Cápac. Instituyó el uso del calendario agrícola.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Lloque Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/lloque-yupanqui.jpg" class="card-img-top" alt="Lloque Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Lloque Yupanqui</h5>
+            <hr>
+            <p class="card-text">Reorganizó el gobierno y mejoró la agricultura.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Mayta Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/mayta-capac.jpg" class="card-img-top" alt="Mayta Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mayta Cápac</h5>
+            <hr>
+            <p class="card-text">Reconocido por su fuerza y carácter militar. Expansión temprana.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Cápac Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/capac-yupanqui.jpg" class="card-img-top" alt="Cápac Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cápac Yupanqui</h5>
+            <hr>
+            <p class="card-text">Primer Inca en llevar campañas militares fuera del Cusco.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Inca Roca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/inca-roca.jpg" class="card-img-top" alt="Inca Roca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Inca Roca</h5>
+            <hr>
+            <p class="card-text">Estableció la nobleza de sangre y sistema de educación.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Yahuar Huácac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/yahuar-huacac.jpg" class="card-img-top" alt="Yahuar Huácac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Yahuar Huácac</h5>
+            <hr>
+            <p class="card-text">Secuestrado en su infancia. Su nombre significa “el que llora sangre”.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Huiracocha Inca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/wiracocha.jpg" class="card-img-top" alt="Wiracocha Inca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Wiracocha Inca</h5>
+            <hr>
+            <p class="card-text">Abandonó Cusco frente al ataque chanca. Padre de Pachacútec.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Pachacútec -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/pachacutec.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pachacútec</h5>
+            <hr>
+            <p class="card-text">Gran reformador del imperio. Constructor de Machu Picchu.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Amaru Inca Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/amaru-inca.jpg" class="card-img-top" alt="Amaru Inca Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Amaru Inca Yupanqui</h5>
+            <hr>
+            <p class="card-text">Hijo de Pachacútec. Gobernó brevemente antes de ser reemplazado.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Túpac Inca Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/tupac-yupanqui.jpg" class="card-img-top" alt="Túpac Inca Yupanqui" style="height: 250px; object-fit: cover; object-position: top;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Túpac Inca Yupanqui</h5>
+            <hr>
+            <p class="card-text">Hijo de Pachacútec. Expansión del imperio hasta Ecuador y Argentina.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Huayna Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/huayna-capac.jpg" class="card-img-top" alt="Huayna Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Huayna Cápac</h5>
+            <hr>
+            <p class="card-text">Gobernó durante la máxima extensión del Tahuantinsuyo. Murió por epidemia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Huáscar -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/huascar.jpg" class="card-img-top" alt="Huáscar" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Huáscar</h5>
+            <hr>
+            <p class="card-text">Hijo legítimo de Huayna Cápac. Perdió la guerra civil contra Atahualpa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Atahualpa -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/atahualpa.png" class="card-img-top" alt="Atahualpa" style="height: 250px; object-fit: cover; object-position: top;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Atahualpa</h5>
+            <hr>
+            <p class="card-text">Último Inca. Capturado y ejecutado por los españoles en Cajamarca.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Costumbres -->
+  <section class="py-5">
+    <div class="container">
+
+      <h2>Costumbres</h2>
+
+      <p>
+        Los incas tenían rituales religiosos, festivales como Inti Raymi, uso de quipus para contabilidad, 
+        y la mita como sistema de trabajo comunitario obligatorio.
+      </p>
+
+          <img src="img/inti-raymi.jpg" style="height: 350px; width: auto;"
+         alt="Inti Raymi" class="img-fluid rounded shadow mt-3">
+
+    </div>
+
+  </section>
+
+  <!-- Cosas resaltantes -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2>Cosas Resaltantes</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/qhapaq-ñan.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Qhapaq Ñan</h5>
+              <hr>
+              <p class="card-text">
+                Red de más de 30,000 km de caminos que conectaba todo el imperio, incluyendo tambos y chasquis.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/terrazas.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Terrazas Agrícolas</h5>
+              <hr>
+              <p class="card-text">
+                Sistema de agricultura en terrazas que optimizaba el uso del terreno montañoso.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/medicina.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Medicina Ancestral</h5>
+              <hr>
+              <p class="card-text">
+                Uso de plantas medicinales, cirugías craneales y tratamientos avanzados para la época.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+<section class="text-center py-5 bg-light border-top w-100 mt-5">
+  <h2 class="fw-bold">¡Terminaste el viaje!</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Ve a nuestro artículos de reseñas para conocer las experiencias, opiniones y recomendaciones de otros viajeros en Cuzco.
+  </p>
+  <a href="reseñas.html" class="btn btn-primary btn-md mt-3">Descubre la historia</a>
+</section>
+
+</main>
+
+
+
+
+   <div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Iniciar Sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear Cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="newname" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="newname" placeholder="Tu nombre">
+          </div>
+          <div class="mb-3">
+            <label for="newemail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="newemail" placeholder="ejemplo@mail.com">
+          </div>
+          <div class="mb-3">
+            <label for="newpassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="newpassword" placeholder="Crea una contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

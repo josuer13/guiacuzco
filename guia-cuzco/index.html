@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guía Cuzco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+      .nav-link:hover {
+        background-color: #f1f1f1
+      }
+      .nav-link.active:hover {
+        background-color: #0b5ed7;
+      }
+      .input-group-text {
+        background-color: #fff;
+        border-left: 0;
+        cursor: pointer;
+      }
+      .input-group .form-control {
+        border-right: 0;
+      }
+      .input-group-text i {
+        color: #6c757d;
+        font-size: 1.1rem;
+      }
+      .input-group-text:hover i {
+        color: #0d6efd;
+      }
+
+</style>
+  </head>
+  <body>
+
+    <div class="d-flex flex-column flex-shrink-0 bg-light p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Guía Cuzco</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="index.html" class="nav-link active">
+            <i class="bi bi-house-door-fill me-3"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <a href="sitios.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-bank2 me-3"></i> Sitios turísticos
+          </a>
+        </li>
+        <li>
+          <a href="platos.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-egg-fried me-3"></i> Platos típicos
+          </a>
+        </li>
+        <li>
+          <a href="historia.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-book-fill me-3"></i> Historia
+          </a>
+        </li>
+        <li>
+          <a href="reseñas.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-star-fill me-3"></i> Reseñas
+          </a>
+        </li>
+
+        <hr>
+
+        <li class="nav-item dropdown">
+        <a href="#" class="nav-link link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="sidebarProfileIcon" class="bi bi-person-circle me-2 fs-5"></span>
+          <img id="sidebarProfileImg" class="rounded-circle me-2 d-none" width="24" height="24" alt="Foto de perfil">
+          <span id="profile-name">Perfil</span>
+        </a>
+        
+        <ul class="dropdown-menu text-small shadow">
+              <li><a class="dropdown-item" href="#" id="reviewsLink" data-bs-toggle="modal" data-bs-target="#reviewsModal">Mis reseñas</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Configuración</a></li>
+              <li><a class="dropdown-item" href="#" id="editProfileLink" data-bs-toggle="modal" data-bs-target="#editProfileModal">Editar perfil</a></li>
+          <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+        </ul>
+      </li>
+
+
+
+      <div class="mt-auto pt-3 d-flex justify-content-center gap-2" style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+          Crear Cuenta
+        </a>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">
+          Iniciar Sesión
+        </button>
+      </div>
+
+
+    </div>
+
+<main class="flex-grow-1 d-flex flex-column align-items-center p-0 m-0">
+
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px;">
+    <h1>Bienvenido a la Guía de Cuzco</h1>
+    <p>
+      Explora el corazón del Imperio Inca. Esta guía te llevará a descubrir los rincones más emblemáticos 
+      de Cuzco, desde sus imponentes sitios arqueológicos hasta sus calles llenas de historia y cultura viva.
+    </p>
+    <img src="img/machupicchu.jpg" style="height: 350px; width: auto;"
+         alt="Machu Picchu" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <section class="py-5 mt-5">
+  <div class="container text-center">
+    <h2 class="text-center mb-2">Descubre Cuzco con nosotros</h2>
+    <p class="text-muted mb-5">Nuestro sitio te ofrece una experiencia completa para conocer la historia, cultura y lugares de Cuzco de forma clara, visual y moderna.</p>
+
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 text-start">
+        <h3 class="fw-bold">📘 Información Clara y Organizada</h3>
+        <p>Accede a secciones bien estructuradas que te permiten explorar la historia, cultura y lugares más emblemáticos sin perderte entre datos dispersos.</p>
+        <p class="text-muted">Todo está pensado para que aprendas rápido y disfrutes del contenido.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="img/estructura.png" class="img-fluid rounded shadow" alt="Organización del contenido">
+      </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+      <div class="col-md-6 text-start">
+        <h3 class="fw-bold">🖼️ Diseño Visual e Intuitivo</h3>
+        <p>Las imágenes, íconos y colores te guían por la página para que aprendas visualmente, no solo leyendo. Cada parte del sitio está hecha para inspirar y enseñar.</p>
+        <p class="text-muted">Ideal tanto para turistas como para curiosos que quieren conocer más de Cuzco.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="img/visual.png" class="img-fluid rounded shadow" alt="Diseño intuitivo">
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-md-6 text-start">
+        <h3 class="fw-bold">🌐 Enlaces y Recursos Útiles</h3>
+        <p>Explora sitios confiables, fuentes históricas y contenido externo cuidadosamente seleccionado que complementa lo que ves aquí.</p>
+        <p class="text-muted">Aprende más con solo un clic desde nuestras secciones.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="img/recursos.png" class="img-fluid rounded shadow" alt="Recursos y enlaces">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Cultura viva -->
+  <section class="container py-5">
+
+    <h2 class="text-center mb-5">Vive la esencia de Cuzco</h2>
+
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/cultura.jpg" class="img-fluid rounded shadow" alt="Cultura Cusqueña">
+      </div>
+      <div class="col-md-6">
+        <h2>Una Cultura Viva</h2>
+        <p class="text-muted">
+          En Cuzco, las tradiciones incas y españolas conviven en perfecta armonía. Las festividades, los textiles, la música 
+          y la gastronomía son parte del legado que los cusqueños mantienen con orgullo.
+        </p>
+        <p class="text-muted">
+          Desde la famosa fiesta del Inti Raymi hasta los mercados artesanales de San Blas, cada experiencia te conecta 
+          con un pasado que sigue latiendo en el presente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitectura incaica -->
+  <section class="container py-5">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/arquitectura.webp" class="img-fluid rounded shadow" alt="Arquitectura Inca" style="width: 100%; height: auto;">
+      </div>
+      <div class="col-md-6">
+        <h2>Arquitectura Incaica</h2>
+        <p class="text-muted">
+          Las piedras de Cuzco hablan. Los muros perfectamente encajados, sin cemento ni mortero, son testimonio 
+          de una ingeniería adelantada a su tiempo.
+        </p>
+        <p class="text-muted">
+          En cada templo, calle y muro, la precisión inca sigue desafiando a los siglos y maravillando a arquitectos y viajeros.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arte y espiritualidad -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/arte-espiritualidad.jpg" class="img-fluid rounded shadow" alt="Arte y espiritualidad">
+      </div>
+      <div class="col-md-6">
+        <h2>Arte y Espiritualidad</h2>
+        <p class="text-muted">
+          El arte cusqueño es una fusión de creencias. Iglesias coloniales se levantan sobre antiguos templos incas, 
+          simbolizando siglos de sincretismo espiritual.
+        </p>
+        <p class="text-muted">
+          La Escuela Cusqueña de pintura, con su estilo único, es una de las expresiones artísticas más destacadas de América Latina.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tradiciones y festividades -->
+  <section class="bg-white py-5 w-100">
+    <div class="container text-center">
+    <h2 class="text-center mb-2">Tradiciones que Perduran</h2>
+      <p class="text-muted mb-5" style="max-width: 700px; margin: 0 auto;">
+        Cada mes, Cuzco se viste de fiesta. Las danzas, la música y los colores reflejan el alma del pueblo andino.  
+        Desde el Corpus Christi hasta la Virgen del Carmen, la devoción y la alegría llenan las calles.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <img src="img/inti-raymi.jpg" class="img-fluid rounded shadow-sm" alt="Inti Raymi" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Inti Raymi</h5>
+          <p class="text-muted small">Celebración inca del Sol, símbolo de renacimiento y energía espiritual.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="img/virgen-carmen.jpg" class="img-fluid rounded shadow-sm" alt="Virgen del Carmen" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Virgen del Carmen</h5>
+          <p class="text-muted small">Fiesta llena de color, danza y fe, donde el sincretismo se hace arte vivo.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="img/corpus-christi.jpg" class="img-fluid rounded shadow-sm" alt="Corpus Christi" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Corpus Christi</h5>
+          <p class="text-muted small">Las imágenes de santos recorren la Plaza de Armas en una procesión majestuosa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Sección de features -->
+  <section class="bg-white py-5 w-100">
+    <div class="container">
+    <h2 class="text-center mb-2">Sigue Descubriendo</h2>
+    <p class="text-center text-muted mb-4"> Explora más sobre Cuzco en nuestras secciones dedicadas a sitios turísticos, gastronomía, historia y reseñas de visitantes.</p>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
+            <img src="img/sacsayhuaman.JPG" class="card-img-top" alt="Sitios turísticos" style="height: 205.5px">
+            <div class="card-body text-center">
+              <h5 class="card-title">Sitios Turísticos</h5>
+              <p class="card-text">Explora Machu Picchu, el Valle Sagrado y las maravillas del Cusco.</p>
+              <a href="sitios.html" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
+            <img src="img/cuy chactado.jpg" class="card-img-top" alt="Restaurantes">
+            <div class="card-body text-center">
+              <h5 class="card-title">Gastronomía</h5>
+              <p class="card-text">Prueba el cuy al horno, la pachamanca y los sabores ancestrales andinos.</p>
+              <a href="platos.html" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
+            <img src="img/catedral.JPG" class="card-img-top" alt="Historia">
+            <div class="card-body text-center">
+              <h5 class="card-title">Historia</h5>
+              <p class="card-text">Descubre cómo el Imperio Inca y la colonia dejaron huella en la ciudad.</p>
+              <a href="historia.html" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
+            <img src="img/plaza de armas.jpg" class="card-img-top" alt="Reseñas">
+            <div class="card-body text-center">
+              <h5 class="card-title">Reseñas</h5>
+              <p class="card-text">Conoce la experiencia de otros viajeros y prepara mejor tu viaje.</p>
+              <a href="resenas.html" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CTA final -->
+<section class="text-center py-5 bg-light border-top w-100 container-fluid" style="margin-bottom:-24px;">
+  <h2 class="fw-bold">¿Listo para descubrir Cuzco?</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Tu aventura comienza aquí. Nuestro próximo artículo contiene información sobre los Sitios Turísticos más famosos de la Ciudad Imperial del Cuzco.
+  </p>
+  <a href="sitios.html" class="btn btn-primary btn-md mt-3">Empieza tu viaje</a>
+</section>
+
+</main>
+
+    <!-- Modal Iniciar Sesión -->
+
+   <div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Iniciar Sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+
+            <div class="mb-3">
+              <label for="username" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+            </div> 
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+
+          </form>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+<!-- Modal Crear Cuenta -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Crear Cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="signUpForm">
+
+          <div class="mb-3">
+            <label for="newuser" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="newuser" placeholder="Nombre de usuario" maxlength="15" minlength="3" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="newname" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="newname" placeholder="Tu nombre" maxlength="15">
+          </div>
+
+          <div class="mb-3">
+            <label for="newemail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="newemail" placeholder="ejemplo@mail.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="newpassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="newpassword" placeholder="Crea una contraseña" minlength="6" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <!-- Modal Mis Reseñas -->
+
+<div class="modal fade" id="reviewsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Mis Reseñas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <p>Tu reseña actual:</p>
+          <p id="user-review" class="text-muted">Aún no has publicado ninguna reseña.</p>
+          <button class="btn btn-outline-primary w-100" id="editReviewBtn">Editar reseña</button>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Configuración -->
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Configuración</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Idioma (no funcional) -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Idioma</label>
+          <select class="form-select form-select-sm" disabled>
+            <option selected>Español</option>
+            <option>Inglés</option>
+          </select>
+          <small class="text-muted d-block mt-1">Esta función aún no está activa.</small>
+        </div>
+
+        <!-- Modo oscuro como título -->
+        <div class="mb-2">
+          <label class="form-label fw-bold">Modo oscuro</label>
+        </div>
+
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" id="darkModeSwitch" disabled>
+          <label class="form-check-label" for="darkModeSwitch">Activar modo oscuro</label>
+          <small class="text-muted d-block mt-1">Esta función aún no está activa.</small>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Modal Editar Perfil -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editProfileForm">
+
+          <!-- Usuario (no editable) -->
+          <div class="mb-3">
+            <label for="editUser" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="editUser" disabled>
+            <div class="form-text">No puedes cambiar tu usuario, solo tu nombre global.</div>
+          </div>
+
+          <!-- Nombre editable -->
+          <div class="mb-3">
+            <label for="editName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editName" maxlength="18">
+          </div>
+
+          <!-- Foto -->
+          <div class="text-center mb-3 mt-4">
+            <img id="editProfileImg" src="img/perfil.png" class="rounded-circle shadow-sm mb-2" width="80" height="80" alt="Foto de perfil">
+            <input type="file" id="editPhotoInput" class="form-control form-control-sm" accept="image/*">
+          </div>
+
+          <div class="d-flex flex-column gap-2 mt-4">
+            <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+            <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Cambiar contraseña</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cambiar Contraseña -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Cambiar Contraseña</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="changePasswordForm">
+
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Contraseña actual</label>
+            <input type="password" class="form-control" id="currentPassword" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nueva contraseña</label>
+            <input type="password" class="form-control" id="newPassword" minlength="6" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control" id="confirmPassword" minlength="6" required>
+          </div>
+
+          <button type="submit" class="btn btn-danger w-100">Guardar nueva contraseña</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const perfil = document.getElementById("profile-name");
+  const signUpForm = document.getElementById("signUpForm");
+  const editUser = document.getElementById("editUser");
+  const editName = document.getElementById("editName");
+
+  const reviewsLink = document.getElementById("reviewsLink");
+  const editProfileLink = document.getElementById("editProfileLink");
+
+  const sidebarProfileIcon = document.getElementById("sidebarProfileIcon");
+  const sidebarProfileImg = document.getElementById("sidebarProfileImg");
+  const editProfileImg = document.getElementById("editProfileImg");
+  const editPhotoInput = document.getElementById("editPhotoInput");
+
+  const changePasswordForm = document.getElementById("changePasswordForm");
+
+  let usuario = "";
+  let nombre = "";
+  let foto = "";
+  let passwordActual = "";
+  let nuevaFoto = false;
+
+  // Al inicio: deshabilitar opciones de perfil
+  reviewsLink.classList.add("disabled");
+  editProfileLink.classList.add("disabled");
+  reviewsLink.setAttribute("tabindex", "-1");
+  editProfileLink.setAttribute("tabindex", "-1");
+
+  // Crear cuenta
+  signUpForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    usuario = document.getElementById("newuser").value.trim() || "usuario";
+    nombre = document.getElementById("newname").value.trim() || usuario;
+    passwordActual = document.getElementById("newpassword").value.trim();
+
+    perfil.textContent = nombre;
+    editUser.value = usuario;
+    editName.value = nombre;
+
+    // Habilitar opciones
+    reviewsLink.classList.remove("disabled");
+    editProfileLink.classList.remove("disabled");
+    reviewsLink.removeAttribute("tabindex");
+    editProfileLink.removeAttribute("tabindex");
+
+    // Mostrar ícono por defecto si no hay foto
+    if (!foto) {
+      sidebarProfileIcon.classList.remove("d-none");
+      sidebarProfileImg.classList.add("d-none");
+    }
+
+    alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}\nContraseña: ${passwordActual}`);
+
+    bootstrap.Modal.getInstance(document.getElementById("signUpModal")).hide();
+  });
+
+  // Editar perfil
+  document.getElementById("editProfileForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nuevoNombre = editName.value.trim() || usuario;
+    let mensaje = "";
+
+    if (nuevoNombre !== nombre && nuevaFoto) {
+      mensaje = "Tu nombre y foto se han actualizado correctamente.";
+    } else if (nuevoNombre !== nombre) {
+      mensaje = "Tu nombre se ha actualizado correctamente.";
+    } else if (nuevaFoto) {
+      mensaje = "Tu foto de perfil se ha actualizado correctamente.";
+    } else {
+      mensaje = "No hiciste ningún cambio.";
+    }
+
+    nombre = nuevoNombre;
+    perfil.textContent = nombre;
+    nuevaFoto = false;
+
+    alert(mensaje);
+
+    bootstrap.Modal.getInstance(document.getElementById("editProfileModal")).hide();
+  });
+
+  // Cambiar foto de perfil
+  editPhotoInput.addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        foto = ev.target.result;
+        nuevaFoto = true;
+
+        sidebarProfileImg.src = foto;
+        sidebarProfileImg.classList.remove("d-none");
+        sidebarProfileIcon.classList.add("d-none");
+
+        editProfileImg.src = foto;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Cambiar contraseña
+  changePasswordForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const actual = document.getElementById("currentPassword").value.trim();
+    const nueva = document.getElementById("newPassword").value.trim();
+    const confirmar = document.getElementById("confirmPassword").value.trim();
+
+    if (actual === "" || nueva === "" || confirmar === "") {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
+    if (actual !== passwordActual) {
+      alert("La contraseña actual es incorrecta.");
+      return;
+    }
+
+    if (nueva.length < 6) {
+      alert("La nueva contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    if (nueva !== confirmar) {
+      alert("Las contraseñas nuevas no coinciden.");
+      return;
+    }
+
+    passwordActual = nueva;
+    alert("Tu contraseña se ha cambiado exitosamente.");
+
+    // Cerrar modal de cambio de contraseña
+    bootstrap.Modal.getInstance(document.getElementById("changePasswordModal")).hide();
+
+    // Limpiar campos
+    changePasswordForm.reset();
+  });
+});
+</script>
+
+  </body>
+</html>

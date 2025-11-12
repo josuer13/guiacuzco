@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guía Cuzco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+      .nav-link:hover {
+        background-color: #f1f1f1
+      }
+      .nav-link.active:hover {
+        background-color: #0b5ed7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-shrink-0 bg-light p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Guía Cuzco</span>
+      </a>
+      <hr>
+
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="index.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-house-door-fill me-3"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <a href="sitios.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-bank2 me-3"></i> Sitios turísticos
+          </a>
+        </li>
+        <li>
+          <a href="platos.html" class="nav-link active">
+            <i class="bi bi-egg-fried me-3"></i> Platos típicos
+          </a>
+        </li>
+        <li>
+          <a href="historia.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-book-fill me-3"></i> Historia
+          </a>
+        </li>
+        <li>
+          <a href="reseñas.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-star-fill me-3"></i> Reseñas
+          </a>
+        </li>
+
+        <hr>
+
+        <li>
+          <a href="#" class="nav-link link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-3"></i> Perfil
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">Mis reseñas</a></li>
+            <li><a class="dropdown-item" href="#">Configuración</a></li>
+            <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="mt-auto pt-3 d-flex justify-content-center gap-2">
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+          Crear Cuenta
+        </a>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">
+          Iniciar Sesión
+        </button>
+      </div>
+
+
+    </div>
+
+<main class="flex-grow-1 d-flex flex-column align-items-center p-0">
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px;">
+    <h1>Restaurantes en Cuzco</h1>
+    <p>
+      La gastronomía cuzqueña fusiona tradición e innovación. Aquí podrás disfrutar de platos 
+      típicos como el cuy al horno, la trucha andina o el chiri uchu, junto a experiencias gourmet 
+      en restaurantes de prestigio internacional.
+    </p>
+    <img src="img/cuy chactado.jpg" style="height: 350px; width: auto;"
+         alt="Plato típico de Cuy" class="img-fluid rounded shadow mt-3 mb-5">
+  </div>
+
+<!-- Sabores del Cuzco -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Sabores del Cuzco</h2>
+    <p class="text-center text-muted mb-5">
+      La gastronomía cusqueña mezcla tradición, historia y productos del Ande que han perdurado por siglos.
+    </p>
+
+    <!-- Plato 1 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/cuy.jpg" alt="Cuy chactado" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Cuy Chactado</h4>
+        <hr>
+        <p>
+          Un clásico del sur andino. El cuy, frito hasta quedar crujiente, se sirve con papas doradas y ensalada.
+          Es símbolo de celebración y respeto a la tradición incaica.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 2 -->
+    <div class="row align-items-center flex-row-reverse mb-5">
+      <div class="col-md-6">
+        <img src="img/chiriuchu.jpg" alt="Chiri uchu" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Chiri Uchu</h4>
+        <hr>
+        <p>
+          Plato emblemático del Corpus Christi. Se sirve frío e incluye cuy, gallina, queso, maíz tostado, rocoto y torrejas.
+          Representa la unión de las culturas andina e hispana.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 3 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/adobo.jpg" alt="Adobo cusqueño" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Adobo Cusqueño</h4>
+        <hr>
+        <p>
+          Guiso de cerdo marinado en chicha de jora y ají panca. Se disfruta especialmente los domingos por la mañana en los pueblos del Valle Sagrado.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 4 -->
+    <div class="row align-items-center flex-row-reverse mb-5">
+      <div class="col-md-6">
+        <img src="img/olluquito-charqui.jpg" alt="Olluquito con charqui" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Olluquito con Charqui</h4>
+        <hr>
+        <p>
+          Preparado con olluco (un tubérculo andino) y carne seca de alpaca. Un plato que combina sabor y herencia ancestral.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 5 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/chicharron-cusqueno.jpg" alt="Chicharrón cusqueño" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Chicharrón Cusqueño</h4>
+        <hr>
+        <p>
+          Carne de cerdo frita en su propia grasa, servida con mote, zarza y hierba buena. Tradicional en fiestas y domingos familiares.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Alimentos Ancestrales -->
+<section class="py-5 bg-light border mb-5 ">
+  <div class="container">
+    <h2 class="text-center mb-3">Alimentos Ancestrales Andinos</h2>
+    <p class="text-center text-muted mb-5">
+      Los incas dominaron la agricultura de altura, creando una dieta rica en nutrientes que aún forma parte de la mesa cusqueña.
+    </p>
+
+    <div class="row g-4">
+      <!-- Papa Nativa -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/papa.jpg" class="card-img-top" alt="Papa nativa" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Papa Nativa</h5>
+            <p class="small text-muted">Más de 3,000 variedades de papa se cultivan en el Perú, muchas originarias del Cuzco.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maíz Cusqueño -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/choclo.jpg" class="card-img-top" alt="Choclo" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Choclo</h5>
+            <p class="small text-muted">Famoso por su grano gigante y sabor suave. Es base de bebidas como la chicha de jora.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quinua -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/quinua.jpg" class="card-img-top" alt="Quinua" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Quinua</h5>
+            <p class="small text-muted">El “grano de oro” de los Andes. Fuente de proteína, energía y tradición milenaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarwi -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/tarwi.jpg" class="card-img-top" alt="Tarwi" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Tarwi</h5>
+            <p class="small text-muted">Leguminosa rica en proteínas que los incas usaban como base en su alimentación diaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoja de Coca -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/hoja-coca.jpg" class="card-img-top" alt="Hoja de coca" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Hoja de Coca</h5>
+            <p class="small text-muted">Sagrada para los incas, usada para aliviar el cansancio, el mal de altura y en rituales ancestrales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kiwicha -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/kiwicha.jpg" class="card-img-top" alt="Kiwicha" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Kiwicha</h5>
+            <p class="small text-muted">
+              También conocida como amaranto andino, era considerada un alimento sagrado por los incas por su alto valor nutritivo y su resistencia al clima.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="text-center py-5 bg-light border-top w-100 mt-5">
+  <h2 class="fw-bold">Sigue explorando Cuzco</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Ahora que conoces los deliciosos platos típicos, descubre la rica historia que dio forma a la ciudad imperial de Cuzco.
+  </p>
+  <a href="historia.html" class="btn btn-primary btn-md mt-3">Descubre la historia</a>
+</section>
+
+
+</main>
+
+
+
+   <div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Iniciar Sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear Cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="newname" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="newname" placeholder="Tu nombre">
+          </div>
+          <div class="mb-3">
+            <label for="newemail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="newemail" placeholder="ejemplo@mail.com">
+          </div>
+          <div class="mb-3">
+            <label for="newpassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="newpassword" placeholder="Crea una contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guía Cuzco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+      .nav-link:hover {
+        background-color: #f1f1f1;
+      }
+      .nav-link.active:hover {
+        background-color: #0b5ed7;
+      }
+      main {
+        margin-left: 220px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 bg-light p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Guía Cuzco</span>
+      </a>
+      <hr>
+
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="index.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-house-door-fill me-3"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <a href="sitios.html" class="nav-link active">
+            <i class="bi bi-bank2 me-3"></i> Sitios turísticos
+          </a>
+        </li>
+        <li>
+          <a href="platos.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-egg-fried me-3"></i> Platos típicos
+          </a>
+        </li>
+        <li>
+          <a href="historia.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-book-fill me-3"></i> Historia
+          </a>
+        </li>
+        <li>
+          <a href="reseñas.html" class="nav-link link-body-emphasis">
+            <i class="bi bi-star-fill me-3"></i> Reseñas
+          </a>
+        </li>
+
+        <hr>
+
+        <li>
+          <a href="#" class="nav-link link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-3"></i> Perfil
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">Mis reseñas</a></li>
+            <li><a class="dropdown-item" href="#">Configuración</a></li>
+            <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="mt-auto pt-3 d-flex justify-content-center gap-2">
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+          Crear Cuenta
+        </a>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">
+          Iniciar Sesión
+        </button>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <main class="flex-grow-1 p-0">
+
+      <!-- Hero -->
+      <section class="text-center mb-5" style="max-width: 800px; margin: 0 auto;">
+        <h1>Sitios Turísticos</h1>
+        <p>
+          Desde Machu Picchu hasta el Valle Sagrado, Cuzco está lleno de tesoros arquitectónicos y paisajes 
+          impresionantes que narran siglos de historia. Cada rincón guarda un pedazo del legado Inca y 
+          colonial, convirtiendo a la ciudad en un museo vivo.
+        </p>
+        <img src="img/sacsayhuaman.JPG" style="height: 350px; width: auto;"
+             alt="Sacsayhuamán" class="img-fluid rounded shadow mt-3">
+      </section>
+
+      <!-- Sitios principales -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-2">Lugares Imperdibles</h2>
+          <p class="text-center text-muted mb-5">
+            Cada uno de estos lugares fue testigo del esplendor del Imperio Inca y conserva la esencia de una civilización que marcó la historia del Perú y del mundo.
+          <div class="row g-4">
+
+            <!-- Machu Picchu -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/machupicchu.jpg" class="card-img-top" alt="Machu Picchu" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Machu Picchu</h5>
+                  <p class="card-text">La joya del Imperio Inca, Patrimonio de la Humanidad y una de las maravillas del mundo moderno.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Construida en el siglo XV por orden de Pachacútec, esta ciudadela se eleva a 2,430 m s. n. m. 
+                    y sigue siendo un misterio sobre cómo se levantó con tal precisión sin herramientas modernas.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Machu_Picchu" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sacsayhuamán -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/sacsayhuaman2.jpg" class="card-img-top" alt="Sacsayhuamán" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Sacsayhuamán</h5>
+                  <p class="card-text">Fortaleza ceremonial inca con bloques de piedra que pesan más de 100 toneladas.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus murallas zigzagueantes representan los dientes del puma, animal sagrado de los incas. 
+                    Ninguna piedra está unida con mortero, y aun así, ni una hoja puede pasar entre ellas.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Sacsayhuam%C3%A1n" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Qoricancha -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/qoricancha.webp" class="card-img-top" alt="Qoricancha" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Qoricancha</h5>
+                  <p class="card-text">El Templo del Sol, centro espiritual más importante del Tahuantinsuyo.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Antiguamente sus muros estaban recubiertos de oro puro. Durante el Inti Raymi, el sol iluminaba 
+                    directamente el altar principal, un logro arquitectónico y astronómico extraordinario.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Qoricancha" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valle Sagrado -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/valle-sagrado.jpg" class="card-img-top" alt="Valle Sagrado de los Incas" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Valle Sagrado de los Incas</h5>
+                  <p class="card-text">Un valle fértil rodeado de montañas y antiguas terrazas agrícolas. Indispensable para los antiguos Incas.  </p>
+                  <hr>
+                  <p class="small text-muted">
+                    Regado por el río Urubamba, conserva pueblos como Pisac y Ollantaytambo. Sus terrazas agrícolas aún se usan, 
+                    y la energía del valle se siente en cada paso.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Valle_Sagrado_de_los_Incas" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ollantaytambo -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/ollantaytambo.webp" class="card-img-top" alt="Ollantaytambo" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Ollantaytambo</h5>
+                  <p class="card-text">Fortaleza, templo y ciudad inca que aún conserva su trazado original.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Fue escenario de la única victoria inca frente a los conquistadores españoles. 
+                    Sus terrazas, canales, calles y su increíble estrtuctura son un testimonio vivo de la ingeniería ancestral.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Ollantaytambo" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pisac -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/pisac.jpg" class="card-img-top" alt="Pisac" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Pisac</h5>
+                  <p class="card-text">Ruinas arqueológicas en la cima de una montaña, junto a un mercado lleno de color y vida.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus terrazas agrícolas, alineadas con las estrellas, servían para probar diferentes microclimas. 
+                    Hoy, su mercado artesanal es uno de los más vibrantes del valle.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Pisac" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Moray -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/moray.jpg" class="card-img-top" alt="Moray" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Moray</h5>
+                  <p class="card-text">Laboratorio agrícola donde los incas experimentaron con la temperatura y la altura.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Cada nivel de sus terrazas circulares crea un microclima distinto, con hasta 15°C de diferencia. 
+                    Un ejemplo de ciencia ancestral aplicada a la agricultura.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Moray_(arqueolog%C3%ADa)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Maras -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/maras.jpg" class="card-img-top" alt="Salineras de Maras" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Salineras de Maras</h5>
+                  <p class="card-text">Miles de pozos de sal formados por un manantial natural en las laderas del valle.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Cada poza pertenece a una familia local. La sal rosada de Maras, rica en minerales, 
+                    es reconocida en todo el mundo por su pureza y color único.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Maras_(Cusco)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+            <!-- Tesoros Ocultos del Cuzco -->
+      <section class="py-5 bg-light border">
+        <div class="container-fluid px-5">
+          <h2 class="text-center mb-2">Tesoros Ocultos del Cuzco</h2>
+          <p class="text-center text-muted mb-5">
+            Rincones menos conocidos pero igualmente asombrosos, donde se revela la habilidad, la fe y la precisión de los antiguos incas.
+          </p>
+
+          <div class="row g-4 justify-content-center">
+
+            <!-- Piedra de los 12 Ángulos -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/piedra-12-angulos.jpg" class="card-img-top" alt="Piedra de los 12 ángulos" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Piedra de los 12 Ángulos</h5>
+                  <p class="card-text">Símbolo de la ingeniería inca y de la perfección en el tallado de piedra.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Situada en la calle Hatun Rumiyoc, esta piedra encaja con precisión absoluta entre otras sin usar ningún tipo de cemento. 
+                    Representa la maestría arquitectónica que desafía el tiempo.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Piedra_de_los_doce_%C3%A1ngulos" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kenko -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/kenko.jpg" class="card-img-top" alt="Kenko" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Q’enqo</h5>
+                  <p class="card-text">Centro ceremonial tallado directamente en roca, usado para rituales religiosos.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Su nombre significa “laberinto”. En su interior hay canales donde corría agua o sangre de sacrificios, 
+                    uniendo la espiritualidad inca con la naturaleza y su profundo sentido del equilibrio cósmico.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Qenqo" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tambomachay -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/tambomachay.jpg" class="card-img-top" alt="Tambomachay" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Tambomachay</h5>
+                  <p class="card-text">Conocido como “El Baño del Inca”, dedicado al culto del agua y la purificación.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus canales de piedra aún fluyen con agua cristalina. Representa el dominio inca sobre la hidráulica 
+                    y su respeto por los elementos naturales.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Tambomachay" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Cuzco Hoy -->
+      <section class="py-5 border-top">
+        <div class="container">
+          <h2 class="text-center mb-2">Cuzco Hoy</h2>
+          <p class="text-center text-muted mb-5">
+            Más allá de su pasado glorioso, Cuzco vibra con modernidad, aventura y cultura viva. Estos lugares muestran el espíritu actual de la ciudad.
+          </p>
+          <div class="row g-4">
+
+            <!-- Plaza de Armas -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/plaza de armas.jpg" class="card-img-top" alt="Plaza de Armas de Cuzco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Plaza de Armas</h5>
+                  <p class="card-text">Centro histórico y corazón social de la ciudad, rodeado de iglesias y cafés coloniales.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    En tiempos incas fue la plaza principal del imperio. Hoy, es el punto donde se cruzan historia, cultura, 
+                    arte y la vida cotidiana del cuzqueño moderno.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Plaza_de_Armas_del_Cusco" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Catedral del Cuzco -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/catedral.jpg" class="card-img-top" alt="Catedral del Cuzco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Catedral del Cuzco</h5>
+                  <p class="card-text">Una joya del arte colonial que combina iconografía cristiana e incaica.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Construida sobre el antiguo palacio de Viracocha Inca, alberga cuadros de la Escuela Cusqueña, 
+                    donde los artistas locales reinterpretaron la fe con su propio estilo.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Catedral_del_Cusco" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skylodge Adventure Suites -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/skylodge.jpg" class="card-img-top" alt="Skylodge Adventure Suites" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Skylodge Adventure Suites</h5>
+                  <p class="card-text">Cápsulas transparentes colgadas sobre un acantilado en el Valle Sagrado.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    A más de 400 metros de altura, dormir aquí ofrece una vista panorámica única del Urubamba. 
+                    Es una experiencia moderna que combina adrenalina y naturaleza.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Skylodge_Adventure_Suites" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tren a Machu Picchu -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/tren-machu-picchu.jpg" class="card-img-top" alt="Tren a Machu Picchu" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Tren a Machu Picchu</h5>
+                  <p class="card-text">Un recorrido escénico que une el pasado y el presente a través del Valle Sagrado.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Con vistas espectaculares, este viaje ferroviario es una de las experiencias más populares 
+                    para los viajeros que buscan llegar al santuario inca con estilo y comodidad.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/PeruRail" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mirador de Cristo Blanco -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/cristo-blanco.jpg" class="card-img-top" alt="Cristo Blanco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Mirador de Cristo Blanco</h5>
+                  <p class="card-text">Una estatua monumental que observa la ciudad desde las alturas, símbolo de paz y protección.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Ubicada a pocos minutos del centro histórico, ofrece una vista panorámica de todo el Cuzco. 
+                    Su figura blanca resalta entre las montañas, siendo uno de los lugares más visitados al atardecer.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Cristo_Blanco_(Cusco)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="text-center py-5 bg-light border-top w-100 container-fluid" style="margin-bottom:-24px;">
+        <h2 class="fw-bold">Sigue descubriendo el Cuzco</h2>
+        <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+          Nuestro próximo artículo te llevará a un recorrido gastronómico por los platos típicos de la región Imperial del Cuzco.
+        </p>
+        <a href="platos.html" class="btn btn-primary btn-md mt-3">Empieza tu viaje</a>
+      </section>
+    </main>
+
+    <!-- Modal Iniciar Sesión -->
+    <div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Iniciar Sesión</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Crear Cuenta -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Crear Cuenta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="newname" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="newname" placeholder="Tu nombre">
+              </div>
+              <div class="mb-3">
+                <label for="newemail" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="newemail" placeholder="ejemplo@mail.com">
+              </div>
+              <div class="mb-3">
+                <label for="newpassword" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="newpassword" placeholder="Crea una contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
