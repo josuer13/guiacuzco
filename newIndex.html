@@ -303,8 +303,151 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const perfil = document.getElementById("profile-name");
+  const signUpForm = document.getElementById("signUpForm");
+  const editUser = document.getElementById("editUser");
+  const editName = document.getElementById("editName");
+
+  const reviewsLink = document.getElementById("reviewsLink");
+  const editProfileLink = document.getElementById("editProfileLink");
+
+  const sidebarProfileIcon = document.getElementById("sidebarProfileIcon");
+  const sidebarProfileImg = document.getElementById("sidebarProfileImg");
+  const editProfileImg = document.getElementById("editProfileImg");
+  const editPhotoInput = document.getElementById("editPhotoInput");
+
+  const changePasswordForm = document.getElementById("changePasswordForm");
+
+  let usuario = "";
+  let nombre = "";
+  let foto = "";
+  let passwordActual = "";
+  let nuevaFoto = false;
+
+  // Al inicio: deshabilitar opciones de perfil
+  reviewsLink.classList.add("disabled");
+  editProfileLink.classList.add("disabled");
+  reviewsLink.setAttribute("tabindex", "-1");
+  editProfileLink.setAttribute("tabindex", "-1");
+
+  // Crear cuenta
+  signUpForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    usuario = document.getElementById("newuser").value.trim() || "usuario";
+    nombre = document.getElementById("newname").value.trim() || usuario;
+    passwordActual = document.getElementById("newpassword").value.trim();
+
+    perfil.textContent = nombre;
+    editUser.value = usuario;
+    editName.value = nombre;
+
+    // Habilitar opciones
+    reviewsLink.classList.remove("disabled");
+    editProfileLink.classList.remove("disabled");
+    reviewsLink.removeAttribute("tabindex");
+    editProfileLink.removeAttribute("tabindex");
+
+    // Mostrar ícono por defecto si no hay foto
+    if (!foto) {
+      sidebarProfileIcon.classList.remove("d-none");
+      sidebarProfileImg.classList.add("d-none");
+    }
+
+    alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}\nContraseña: ${passwordActual}`);
+
+    bootstrap.Modal.getInstance(document.getElementById("signUpModal")).hide();
+  });
+
+  // Editar perfil
+  document.getElementById("editProfileForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nuevoNombre = editName.value.trim() || usuario;
+    let mensaje = "";
+
+    if (nuevoNombre !== nombre && nuevaFoto) {
+      mensaje = "Tu nombre y foto se han actualizado correctamente.";
+    } else if (nuevoNombre !== nombre) {
+      mensaje = "Tu nombre se ha actualizado correctamente.";
+    } else if (nuevaFoto) {
+      mensaje = "Tu foto de perfil se ha actualizado correctamente.";
+    } else {
+      mensaje = "No hiciste ningún cambio.";
+    }
+
+    nombre = nuevoNombre;
+    perfil.textContent = nombre;
+    nuevaFoto = false;
+
+    alert(mensaje);
+
+    bootstrap.Modal.getInstance(document.getElementById("editProfileModal")).hide();
+  });
+
+  // Cambiar foto de perfil
+  editPhotoInput.addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        foto = ev.target.result;
+        nuevaFoto = true;
+
+        sidebarProfileImg.src = foto;
+        sidebarProfileImg.classList.remove("d-none");
+        sidebarProfileIcon.classList.add("d-none");
+
+        editProfileImg.src = foto;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Cambiar contraseña
+  changePasswordForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const actual = document.getElementById("currentPassword").value.trim();
+    const nueva = document.getElementById("newPassword").value.trim();
+    const confirmar = document.getElementById("confirmPassword").value.trim();
+
+    if (actual === "" || nueva === "" || confirmar === "") {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
+    if (actual !== passwordActual) {
+      alert("La contraseña actual es incorrecta.");
+      return;
+    }
+
+    if (nueva.length < 6) {
+      alert("La nueva contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    if (nueva !== confirmar) {
+      alert("Las contraseñas nuevas no coinciden.");
+      return;
+    }
+
+    passwordActual = nueva;
+    alert("Tu contraseña se ha cambiado exitosamente.");
+
+    // Cerrar modal de cambio de contraseña
+    bootstrap.Modal.getInstance(document.getElementById("changePasswordModal")).hide();
+
+    // Limpiar campos
+    changePasswordForm.reset();
+  });
+});
+
     <!-- Script para cambiar contenido dinámicamente -->
-    <script>
+    
       const mainContent = document.getElementById('mainContent');
       const links = document.querySelectorAll('#sidebarLinks a');
 
@@ -1381,7 +1524,241 @@
 </section>
 
 </main>`,
-        reseñas: `<!-- Main Reseñas -->...aquí va tu main completo de Reseñas...`
+        reseñas: `<main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-0 col">
+  <div class="text-center" style="max-width: 800px;">
+    <h1>Reseñas de Visitantes</h1>
+    <p>
+      Miles de viajeros comparten sus experiencias al recorrer Cuzco. Desde la emoción de subir a 
+      Machu Picchu al amanecer, hasta la calidez de la gente local, cada reseña refleja la magia que 
+      hace de este lugar un destino inolvidable.
+    </p>
+    <img src="img/plaza de armas.jpg" style="height: 350px; width: auto;"
+         alt="Plaza de Armas de Cuzco" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <section class="container my-5">
+  <h2 class="text-center mb-4">Lo que dicen nuestros visitantes</h2>
+
+  <div class="row g-4">
+
+    <!-- Comentario 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+
+          <div class="d-flex align-items-center mb-2 w-100">
+            <div class="rounded-circle bg-warning me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">L</div>
+
+          <h5 class="card-title mb-0">Andrea M.<br>
+          
+          <span class="text-muted" style="font-size: 1.2rem;">5.0</span>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+
+          </h5>
+
+          </div>
+
+          <p class="card-text">
+            Visitar Cuzco fue una experiencia que nunca voy a olvidar. Desde la calidez de su gente hasta la majestuosidad de sus paisajes, todo fue increíble. La caminata por el Valle Sagrado y el tour a Machu Picchu al amanecer me dejaron sin palabras. Recomiendo llevar ropa de colores claros, el sol te puede quemar si llevas ropa de colores oscuros como el negro o azul oscuro, sobre todo, tomarse el tiempo para disfrutar cada rincón con calma. ¡Volvería mil veces!
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Comentario 2 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-success me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">R</div>
+          
+          <h5 class="card-title mb-0">Carlos R.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.5</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+
+        <p class="card-text">
+          Si estás pensando en visitar Cuzco, no lo dudes. Me sorprendió lo bien organizado que estaba todo, especialmente los servicios turísticos. Lo mejor fue la arquitectura y descubrir el pasado; hay algo especial en ese lugar. Recomiendo probar la gastronomía local, en especial el cuy y la chicha morada. Consejo: aclimátate uno o dos días antes de ir a los sitios turísticos, te pueden dar mareos por la altura, recomiendo muña para calmar el mareo.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 3 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-primary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">L</div>
+          
+          <h5 class="card-title mb-0">Lucía G.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.8</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+
+        <p class="card-text">
+          Fue mi primer viaje sola y no pude haber elegido mejor destino. Me sentí segura en todo momento y encontré otros viajeros con quienes compartir excursiones. Me encantó caminar por las calles empedradas del centro de Cuzco, entrar en sus museos y descubrir cada detalle de la historia inca. Mi recomendación es ir los meses desde Abril a Octubre, hace un clima perfecto idea para ver los hermosos paisajes.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+<div class="row g-4 mt-3">
+
+  <!-- Comentario 4 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-danger me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">J</div>
+          <h5 class="card-title mb-0">Javier T.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.9</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          No hay palabras suficientes para describir lo que se siente estar en Cuzco. Desde los templos incas hasta las montañas que parecen tocar el cielo, todo tiene una energía especial. Hice el recorrido por Sacsayhuamán y Qenqo, y quedé impresionado con la historia que se respira. Recomiendo llevar abrigo para la noche, ya que baja bastante la temperatura, y tener siempre una botella de agua. La combinación de cultura, paisaje y hospitalidad lo hace inolvidable.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 5 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-info me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">M</div>
+          <h5 class="card-title mb-0">Mariela V.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">5.0</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          Quedé fascinada con la armonía entre lo antiguo y lo moderno en Cuzco. Los mercados son un espectáculo de colores y aromas, especialmente el de San Pedro, donde probé platillos que nunca había visto. El trato de los locales fue encantador, siempre dispuestos a ayudar. Me encantó visitar los museos y caminar por las calles de piedra iluminadas al atardecer. Consejo: reserva con tiempo las entradas a Machu Picchu y lleva calzado cómodo, lo agradecerás.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 6 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-secondary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">E</div>
+          <h5 class="card-title mb-0">Ernesto P.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.7</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          Cuzco tiene una vibra diferente, como si el tiempo se detuviera. Me encantó la excursión a Maras y Moray, con esos paisajes que parecen de otro planeta. La historia inca está viva en cada muro y cada camino. Recomiendo llevar efectivo, porque en los pueblos pequeños no siempre aceptan tarjeta, y no perderse los atardeceres desde San Blas, donde el cielo se tiñe de tonos dorados y rosados. Sin duda, uno de los mejores viajes de mi vida.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+  </div>
+</section>
+
+
+    <h1 class="mt-5">¿Has visitado Cuzco?</h1>
+    <p class="text-center" style="max-width: 600px;"> Si has explorado las maravillas de Cuzco, nos encantaría conocer tu opinión.
+      Comparte tu experiencia, califica los lugares que visitaste y ayuda a otros viajeros a descubrir lo mejor de esta increíble ciudad.
+    </p>
+      <!-- Botón -->
+    <button type="button" class="btn btn-primary mt-1 mb-4" data-bs-toggle="modal" data-bs-target="#modalResena">
+      Envíanos tu experiencia
+    </button>
+
+  <!-- Modal aquí se queda igual -->
+  <div class="modal fade" id="modalResena" tabindex="-1" aria-labelledby="modalResenaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResenaLabel">Escribir una reseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Tu nombre o alias</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Tu calificación</label>
+              <div class="star-rating d-flex gap-1">
+
+                <input type="text" class="form-control" id="rating" placeholder="Califica del 1 al 5 (se pueden usar decimales)" required>
+              
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="comentario" class="form-label">Tu reseña</label>
+              <textarea class="form-control" id="comentario" rows="4" placeholder="Escribe aquí tu experiencia..." required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="comentario" class="form-label">Fotos del Viaje</label>
+              <input class="form-control" type="file" id="formFile">
+            </div>
+              
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Enviar reseña</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+`
       };
 
       function loadPage(page) {
