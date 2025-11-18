@@ -1,75 +1,107 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Guía Cuzco</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
-      .nav-link:hover {
-        background-color: #f1f1f1
+      main {
+        margin-left: 220px;
+        transition: opacity 0.25s ease-in-out;
       }
-      .nav-link.active:hover {
+
+      /* Sidebar Title Color */
+      [data-bs-theme="light"] .sidebar-title {
+        color: #000 !important;
+      }
+      [data-bs-theme="dark"] .sidebar-title {
+        color: #fff !important;
+      }
+
+      /* Light Mode Custom Styles */
+      [data-bs-theme="light"] .nav-link {
+        color: #000; /* Inactive text black */
+      }
+      [data-bs-theme="light"] .nav-link i {
+        color: #000; /* Inactive icon black */
+      }
+      
+      [data-bs-theme="light"] .nav-link.active {
+        color: #fff !important; /* Active text white, force with !important */
+      }
+      [data-bs-theme="light"] .nav-link.active i {
+        color: #fff !important; /* Active icon white, force with !important */
+      }
+      [data-bs-theme="light"] .nav-link:hover {
+        background-color: #e9ecef;
+      }
+      [data-bs-theme="light"] .nav-link.active:hover {
         background-color: #0b5ed7;
       }
-      .input-group-text {
-        background-color: #fff;
-        border-left: 0;
-        cursor: pointer;
+      
+      /* Dark Mode Overrides */
+      [data-bs-theme="dark"] {
+        color-scheme: dark;
       }
-      .input-group .form-control {
-        border-right: 0;
+      [data-bs-theme="dark"] body {
+        background-color: #212529;
+        color: #dee2e6;
       }
-      .input-group-text i {
-        color: #6c757d;
-        font-size: 1.1rem;
+      [data-bs-theme="dark"] .bg-body-tertiary {
+        background-color: #2b3035 !important;
       }
-      .input-group-text:hover i {
-        color: #0d6efd;
+      [data-bs-theme="dark"] .bg-light {
+        background-color: #2b3035 !important;
+      }
+      [data-bs-theme="dark"] .modal-content {
+        background-color: #343a40;
+        color: #dee2e6;
+      }
+      [data-bs-theme="dark"] .nav-link { color: #dee2e6; } /* Inactive text light gray */
+      [data-bs-theme="dark"] .nav-link i { color: #dee2e6 !important; } /* Inactive icon light gray */
+      [data-bs-theme="dark"] .nav-link:hover {
+        background-color: #343a40;
+      }
+      [data-bs-theme="dark"] .nav-link.active { color: #fff !important; background-color: #0d6efd; }
+      [data-bs-theme="dark"] .nav-link.active i { color: #fff !important; }
+      [data-bs-theme="dark"] .nav-link.active:hover {
+        background-color: #0b5ed7;
+      }
+      [data-bs-theme="dark"] .dropdown-menu {
+        background-color: #343a40;
+      }
+      [data-bs-theme="dark"] .dropdown-item {
+        color: #dee2e6;
+      }
+      [data-bs-theme="dark"] .dropdown-item:hover {
+        background-color: #495057;
+      }
+      [data-bs-theme="dark"] hr {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-</style>
+    </style>
   </head>
   <body>
-
-    <div class="d-flex flex-column flex-shrink-0 bg-light p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <!-- Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary p-3 position-fixed top-0 start-0 h-100 border-end" style="width:220px;">
+      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none sidebar-title">
         <span class="fs-4">Guía Cuzco</span>
       </a>
       <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li>
-          <a href="index.html" class="nav-link active">
-            <i class="bi bi-house-door-fill me-3"></i> Inicio
-          </a>
-        </li>
-        <li>
-          <a href="sitios.html" class="nav-link link-body-emphasis">
-            <i class="bi bi-bank2 me-3"></i> Sitios turísticos
-          </a>
-        </li>
-        <li>
-          <a href="platos.html" class="nav-link link-body-emphasis">
-            <i class="bi bi-egg-fried me-3"></i> Platos típicos
-          </a>
-        </li>
-        <li>
-          <a href="historia.html" class="nav-link link-body-emphasis">
-            <i class="bi bi-book-fill me-3"></i> Historia
-          </a>
-        </li>
-        <li>
-          <a href="reseñas.html" class="nav-link link-body-emphasis">
-            <i class="bi bi-star-fill me-3"></i> Reseñas
-          </a>
-        </li>
+      <ul class="nav nav-pills flex-column mb-auto" id="sidebarLinks">
+        <li><a href="#" class="nav-link" data-page="inicio"><i class="bi bi-house-door-fill me-3"></i>Inicio</a></li>
+        <li><a href="#" class="nav-link" data-page="sitios"><i class="bi bi-bank2 me-3"></i>Sitios turísticos</a></li>
+        <li><a href="#" class="nav-link" data-page="platos"><i class="bi bi-egg-fried me-3"></i>Platos típicos</a></li>
+        <li><a href="#" class="nav-link" data-page="historia"><i class="bi bi-book-fill me-3"></i>Historia</a></li>
+        <li><a href="#" class="nav-link" data-page="reseñas"><i class="bi bi-star-fill me-3"></i>Reseñas</a></li>
+      
+                <hr>
 
-        <hr>
-
-        <li class="nav-item dropdown">
-        <a href="#" class="nav-link link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item dropdown" id="profileDropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <span id="sidebarProfileIcon" class="bi bi-person-circle me-2 fs-5"></span>
           <img id="sidebarProfileImg" class="rounded-circle me-2 d-none" width="24" height="24" alt="Foto de perfil">
           <span id="profile-name">Perfil</span>
@@ -79,228 +111,17 @@
               <li><a class="dropdown-item" href="#" id="reviewsLink" data-bs-toggle="modal" data-bs-target="#reviewsModal">Mis reseñas</a></li>
               <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Configuración</a></li>
               <li><a class="dropdown-item" href="#" id="editProfileLink" data-bs-toggle="modal" data-bs-target="#editProfileModal">Editar perfil</a></li>
-          <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+          <li id="logoutDivider"><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" id="logoutLink">Cerrar sesión</a></li>
         </ul>
       </li>
-
-
-
-      <div class="mt-auto pt-3 d-flex justify-content-center gap-2" style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
-        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
-          Crear Cuenta
-        </a>
-        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">
-          Iniciar Sesión
-        </button>
-      </div>
-
-
-    </div>
-
-<main class="flex-grow-1 d-flex flex-column align-items-center p-0 m-0">
-
-  <!-- Hero -->
-  <div class="text-center" style="max-width: 800px;">
-    <h1>Bienvenido a la Guía de Cuzco</h1>
-    <p>
-      Explora el corazón del Imperio Inca. Esta guía te llevará a descubrir los rincones más emblemáticos 
-      de Cuzco, desde sus imponentes sitios arqueológicos hasta sus calles llenas de historia y cultura viva.
-    </p>
-    <img src="img/machupicchu.jpg" style="height: 350px; width: auto;"
-         alt="Machu Picchu" class="img-fluid rounded shadow mt-3">
-  </div>
-
-  <section class="py-5 mt-5">
-  <div class="container text-center">
-    <h2 class="text-center mb-2">Descubre Cuzco con nosotros</h2>
-    <p class="text-muted mb-5">Nuestro sitio te ofrece una experiencia completa para conocer la historia, cultura y lugares de Cuzco de forma clara, visual y moderna.</p>
-
-    <div class="row align-items-center mb-5">
-      <div class="col-md-6 text-start">
-        <h3 class="fw-bold">📘 Información Clara y Organizada</h3>
-        <p>Accede a secciones bien estructuradas que te permiten explorar la historia, cultura y lugares más emblemáticos sin perderte entre datos dispersos.</p>
-        <p class="text-muted">Todo está pensado para que aprendas rápido y disfrutes del contenido.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="img/estructura.png" class="img-fluid rounded shadow" alt="Organización del contenido">
+      
+      </ul>
+      <div id="authButtons" class="mt-auto pt-3 d-flex justify-content-center gap-2">
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">Crear Cuenta</a>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#signInModal">Iniciar Sesión</button>
       </div>
     </div>
-
-    <div class="row align-items-center mb-5 flex-md-row-reverse">
-      <div class="col-md-6 text-start">
-        <h3 class="fw-bold">🖼️ Diseño Visual e Intuitivo</h3>
-        <p>Las imágenes, íconos y colores te guían por la página para que aprendas visualmente, no solo leyendo. Cada parte del sitio está hecha para inspirar y enseñar.</p>
-        <p class="text-muted">Ideal tanto para turistas como para curiosos que quieren conocer más de Cuzco.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="img/visual.png" class="img-fluid rounded shadow" alt="Diseño intuitivo">
-      </div>
-    </div>
-
-    <div class="row align-items-center">
-      <div class="col-md-6 text-start">
-        <h3 class="fw-bold">🌐 Enlaces y Recursos Útiles</h3>
-        <p>Explora sitios confiables, fuentes históricas y contenido externo cuidadosamente seleccionado que complementa lo que ves aquí.</p>
-        <p class="text-muted">Aprende más con solo un clic desde nuestras secciones.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="img/recursos.png" class="img-fluid rounded shadow" alt="Recursos y enlaces">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Cultura viva -->
-  <section class="container py-5">
-
-    <h2 class="text-center mb-5">Vive la esencia de Cuzco</h2>
-
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <img src="img/cultura.jpg" class="img-fluid rounded shadow" alt="Cultura Cusqueña">
-      </div>
-      <div class="col-md-6">
-        <h2>Una Cultura Viva</h2>
-        <p class="text-muted">
-          En Cuzco, las tradiciones incas y españolas conviven en perfecta armonía. Las festividades, los textiles, la música 
-          y la gastronomía son parte del legado que los cusqueños mantienen con orgullo.
-        </p>
-        <p class="text-muted">
-          Desde la famosa fiesta del Inti Raymi hasta los mercados artesanales de San Blas, cada experiencia te conecta 
-          con un pasado que sigue latiendo en el presente.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Arquitectura incaica -->
-  <section class="container py-5">
-    <div class="row align-items-center flex-md-row-reverse">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <img src="img/arquitectura.webp" class="img-fluid rounded shadow" alt="Arquitectura Inca" style="width: 100%; height: auto;">
-      </div>
-      <div class="col-md-6">
-        <h2>Arquitectura Incaica</h2>
-        <p class="text-muted">
-          Las piedras de Cuzco hablan. Los muros perfectamente encajados, sin cemento ni mortero, son testimonio 
-          de una ingeniería adelantada a su tiempo.
-        </p>
-        <p class="text-muted">
-          En cada templo, calle y muro, la precisión inca sigue desafiando a los siglos y maravillando a arquitectos y viajeros.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Arte y espiritualidad -->
-  <section class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <img src="img/arte-espiritualidad.jpg" class="img-fluid rounded shadow" alt="Arte y espiritualidad">
-      </div>
-      <div class="col-md-6">
-        <h2>Arte y Espiritualidad</h2>
-        <p class="text-muted">
-          El arte cusqueño es una fusión de creencias. Iglesias coloniales se levantan sobre antiguos templos incas, 
-          simbolizando siglos de sincretismo espiritual.
-        </p>
-        <p class="text-muted">
-          La Escuela Cusqueña de pintura, con su estilo único, es una de las expresiones artísticas más destacadas de América Latina.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tradiciones y festividades -->
-  <section class="bg-white py-5 w-100">
-    <div class="container text-center">
-    <h2 class="text-center mb-2">Tradiciones que Perduran</h2>
-      <p class="text-muted mb-5" style="max-width: 700px; margin: 0 auto;">
-        Cada mes, Cuzco se viste de fiesta. Las danzas, la música y los colores reflejan el alma del pueblo andino.  
-        Desde el Corpus Christi hasta la Virgen del Carmen, la devoción y la alegría llenan las calles.
-      </p>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <img src="img/inti-raymi.jpg" class="img-fluid rounded shadow-sm" alt="Inti Raymi" style="height: 300px; object-fit: cover;">
-          <h5 class="mt-3 fw-bold">Inti Raymi</h5>
-          <p class="text-muted small">Celebración inca del Sol, símbolo de renacimiento y energía espiritual.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="img/virgen-carmen.jpg" class="img-fluid rounded shadow-sm" alt="Virgen del Carmen" style="height: 300px; object-fit: cover;">
-          <h5 class="mt-3 fw-bold">Virgen del Carmen</h5>
-          <p class="text-muted small">Fiesta llena de color, danza y fe, donde el sincretismo se hace arte vivo.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="img/corpus-christi.jpg" class="img-fluid rounded shadow-sm" alt="Corpus Christi" style="height: 300px; object-fit: cover;">
-          <h5 class="mt-3 fw-bold">Corpus Christi</h5>
-          <p class="text-muted small">Las imágenes de santos recorren la Plaza de Armas en una procesión majestuosa.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- Sección de features -->
-  <section class="bg-white py-5 w-100">
-    <div class="container">
-    <h2 class="text-center mb-2">Sigue Descubriendo</h2>
-    <p class="text-center text-muted mb-4"> Explora más sobre Cuzco en nuestras secciones dedicadas a sitios turísticos, gastronomía, historia y reseñas de visitantes.</p>
-      <div class="row g-4">
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <img src="img/sacsayhuaman.JPG" class="card-img-top" alt="Sitios turísticos" style="height: 205.5px">
-            <div class="card-body text-center">
-              <h5 class="card-title">Sitios Turísticos</h5>
-              <p class="card-text">Explora Machu Picchu, el Valle Sagrado y las maravillas del Cusco.</p>
-              <a href="sitios.html" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <img src="img/cuy chactado.jpg" class="card-img-top" alt="Restaurantes">
-            <div class="card-body text-center">
-              <h5 class="card-title">Gastronomía</h5>
-              <p class="card-text">Prueba el cuy al horno, la pachamanca y los sabores ancestrales andinos.</p>
-              <a href="platos.html" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <img src="img/catedral.JPG" class="card-img-top" alt="Historia">
-            <div class="card-body text-center">
-              <h5 class="card-title">Historia</h5>
-              <p class="card-text">Descubre cómo el Imperio Inca y la colonia dejaron huella en la ciudad.</p>
-              <a href="historia.html" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <img src="img/plaza de armas.jpg" class="card-img-top" alt="Reseñas">
-            <div class="card-body text-center">
-              <h5 class="card-title">Reseñas</h5>
-              <p class="card-text">Conoce la experiencia de otros viajeros y prepara mejor tu viaje.</p>
-              <a href="resenas.html" class="btn btn-primary btn-sm">Ver más</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- CTA final -->
-<section class="text-center py-5 bg-light border-top w-100 container-fluid" style="margin-bottom:-24px;">
-  <h2 class="fw-bold">¿Listo para descubrir Cuzco?</h2>
-  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
-    Tu aventura comienza aquí. Nuestro próximo artículo contiene información sobre los Sitios Turísticos más famosos de la Ciudad Imperial del Cuzco.
-  </p>
-  <a href="sitios.html" class="btn btn-primary btn-md mt-3">Empieza tu viaje</a>
-</section>
-
-</main>
 
     <!-- Modal Iniciar Sesión -->
 
@@ -525,16 +346,68 @@
   </div>
 </div>
 
+<!-- Modal Escribir Reseña -->
+<div class="modal fade" id="writeReviewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="modal-header">
+        <h5 class="modal-title">Escribe tu reseña</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+      <div class="modal-body">
+        <form id="writeReviewForm">
+
+          <!-- Nombre global -->
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="reviewName" disabled>
+          </div>
+
+          <!-- Valoración -->
+          <div class="mb-3">
+            <label class="form-label">Valoración (0 - 5)</label>
+            <input type="number" step="0.1" min="0" max="5"
+                   class="form-control" id="reviewRating" placeholder="Ejemplo: 4.3">
+          </div>
+
+          <!-- Reseña -->
+          <div class="mb-3">
+            <label class="form-label">Reseña</label>
+            <textarea id="reviewText" class="form-control" rows="3"
+                      placeholder="Escribe tu opinión aquí..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Publicar reseña</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+        <!-- Main dinámico -->
+    <main id="mainContent" class="flex-grow-1 p-0"></main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script> document.addEventListener("DOMContentLoaded", () => {
+
+  // ============================
+  // ELEMENTOS DEL USUARIO
+  // ============================
   const perfil = document.getElementById("profile-name");
   const signUpForm = document.getElementById("signUpForm");
+  const authButtons = document.getElementById("authButtons");
+  const logoutLink = document.getElementById("logoutLink");
+  const logoutDivider = document.getElementById("logoutDivider");
+
   const editUser = document.getElementById("editUser");
   const editName = document.getElementById("editName");
-
   const reviewsLink = document.getElementById("reviewsLink");
   const editProfileLink = document.getElementById("editProfileLink");
 
@@ -542,22 +415,96 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebarProfileImg = document.getElementById("sidebarProfileImg");
   const editProfileImg = document.getElementById("editProfileImg");
   const editPhotoInput = document.getElementById("editPhotoInput");
-
   const changePasswordForm = document.getElementById("changePasswordForm");
 
+  const darkModeSwitch = document.getElementById("darkModeSwitch");
+
+  // ============================
+  // ESTADO DEL USUARIO
+  // ============================
   let usuario = "";
   let nombre = "";
   let foto = "";
   let passwordActual = "";
   let nuevaFoto = false;
 
-  // Al inicio: deshabilitar opciones de perfil
-  reviewsLink.classList.add("disabled");
-  editProfileLink.classList.add("disabled");
-  reviewsLink.setAttribute("tabindex", "-1");
-  editProfileLink.setAttribute("tabindex", "-1");
+  // ============================
+  // ACTUALIZAR ESTADO
+  // ============================
+  function updateUserState(loggedIn) {
 
-  // Crear cuenta
+    if (loggedIn) {
+      authButtons.classList.add("d-none");
+
+      reviewsLink.classList.remove("disabled");
+      editProfileLink.classList.remove("disabled");
+      reviewsLink.removeAttribute("tabindex");
+      editProfileLink.removeAttribute("tabindex");
+
+      logoutLink.parentElement.classList.remove("d-none");
+      logoutDivider.classList.remove("d-none");
+
+      perfil.textContent = nombre;
+      editUser.value = usuario;
+      editName.value = nombre;
+
+      if (foto) {
+        sidebarProfileImg.src = foto;
+        sidebarProfileImg.classList.remove("d-none");
+        sidebarProfileIcon.classList.add("d-none");
+      } else {
+        sidebarProfileImg.classList.add("d-none");
+        sidebarProfileIcon.classList.remove("d-none");
+      }
+
+    } else {
+      authButtons.classList.remove("d-none");
+
+      reviewsLink.classList.add("disabled");
+      editProfileLink.classList.add("disabled");
+      reviewsLink.setAttribute("tabindex", "-1");
+      editProfileLink.setAttribute("tabindex", "-1");
+
+      logoutLink.parentElement.classList.add("d-none");
+      logoutDivider.classList.add("d-none");
+
+      perfil.textContent = "Perfil";
+      usuario = "";
+      nombre = "";
+      foto = "";
+      passwordActual = "";
+
+      sidebarProfileImg.classList.add("d-none");
+      sidebarProfileIcon.classList.remove("d-none");
+      sidebarProfileImg.src = "";
+      editProfileImg.src = "img/perfil.png";
+    }
+
+    const userReviewCard = document.getElementById("userReviewCard");
+    const noReviewMsg = document.getElementById("noReviewMsg");
+
+    if (userReviewCard) {
+      userReviewCard.classList.add("d-none");
+      userReviewCard.innerHTML = "";
+    }
+
+    if (noReviewMsg) noReviewMsg.classList.remove("d-none");
+  }
+
+  updateUserState(false);
+
+  // ============================
+  // LOGOUT
+  // ============================
+  logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    updateUserState(false);
+    alert("Has cerrado sesión.");
+  });
+
+  // ============================
+  // CREAR CUENTA / LOGIN
+  // ============================
   signUpForm.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -565,28 +512,28 @@ document.addEventListener("DOMContentLoaded", () => {
     nombre = document.getElementById("newname").value.trim() || usuario;
     passwordActual = document.getElementById("newpassword").value.trim();
 
-    perfil.textContent = nombre;
-    editUser.value = usuario;
-    editName.value = nombre;
-
-    // Habilitar opciones
-    reviewsLink.classList.remove("disabled");
-    editProfileLink.classList.remove("disabled");
-    reviewsLink.removeAttribute("tabindex");
-    editProfileLink.removeAttribute("tabindex");
-
-    // Mostrar ícono por defecto si no hay foto
-    if (!foto) {
-      sidebarProfileIcon.classList.remove("d-none");
-      sidebarProfileImg.classList.add("d-none");
-    }
-
-    alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}\nContraseña: ${passwordActual}`);
+    alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}`);
 
     bootstrap.Modal.getInstance(document.getElementById("signUpModal")).hide();
+
+    updateUserState(true);
   });
 
-  // Editar perfil
+  // ============================
+  // DARK MODE
+  // ============================
+  darkModeSwitch.removeAttribute('disabled');
+  darkModeSwitch.addEventListener('change', () => {
+    if (darkModeSwitch.checked) {
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', 'light');
+    }
+  });
+
+  // ============================
+  // EDITAR PERFIL
+  // ============================
   document.getElementById("editProfileForm").addEventListener("submit", e => {
     e.preventDefault();
 
@@ -608,30 +555,34 @@ document.addEventListener("DOMContentLoaded", () => {
     nuevaFoto = false;
 
     alert(mensaje);
-
     bootstrap.Modal.getInstance(document.getElementById("editProfileModal")).hide();
   });
 
-  // Cambiar foto de perfil
+  // ============================
+  // CAMBIAR FOTO
+  // ============================
   editPhotoInput.addEventListener("change", e => {
     const file = e.target.files[0];
+
     if (file) {
       const reader = new FileReader();
+
       reader.onload = ev => {
         foto = ev.target.result;
         nuevaFoto = true;
-
         sidebarProfileImg.src = foto;
         sidebarProfileImg.classList.remove("d-none");
         sidebarProfileIcon.classList.add("d-none");
-
         editProfileImg.src = foto;
       };
+
       reader.readAsDataURL(file);
     }
   });
 
-  // Cambiar contraseña
+  // ============================
+  // CAMBIAR PASSWORD
+  // ============================
   changePasswordForm.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -639,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nueva = document.getElementById("newPassword").value.trim();
     const confirmar = document.getElementById("confirmPassword").value.trim();
 
-    if (actual === "" || nueva === "" || confirmar === "") {
+    if (!actual || !nueva || !confirmar) {
       alert("Por favor completa todos los campos.");
       return;
     }
@@ -662,14 +613,1389 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordActual = nueva;
     alert("Tu contraseña se ha cambiado exitosamente.");
 
-    // Cerrar modal de cambio de contraseña
     bootstrap.Modal.getInstance(document.getElementById("changePasswordModal")).hide();
-
-    // Limpiar campos
     changePasswordForm.reset();
   });
-});
-</script>
 
+  // ============================
+  // BLOQUEAR MODAL DE RESEÑA SI NO HAY CUENTA
+  // ============================
+  document.getElementById("writeReviewModal")
+    .addEventListener("show.bs.modal", (e) => {
+      if (!usuario || usuario.trim() === "") {
+        e.preventDefault();
+        alert("Debes crear una cuenta e iniciar sesión para escribir una reseña.");
+      }
+    });
+
+  // ============================
+  // AUTOFILL NOMBRE AL ABRIR
+  // ============================
+  document.getElementById("writeReviewModal")
+    .addEventListener("shown.bs.modal", () => {
+      document.getElementById("reviewName").value = nombre || "Invitado";
+    });
+
+  // ============================
+  // UTILIDADES: AVATAR Y ESTRELLAS
+  // ============================
+  function obtenerAvatar() {
+    if (foto && foto.trim() !== "") {
+      return `<img src="${foto}" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">`;
+    }
+    const inicial = (nombre || "U").charAt(0).toUpperCase();
+    return `<div class="rounded-circle bg-primary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">${inicial}</div>`;
+  }
+
+  function generarEstrellas(valor) {
+    let html = "";
+    const entero = Math.floor(valor);
+    const decimal = valor - entero;
+
+    for (let i = 0; i < entero; i++) html += `<i class="bi bi-star-fill text-warning"></i>`;
+    if (decimal >= 0.5) html += `<i class="bi bi-star-half text-warning"></i>`;
+
+    const faltan = 5 - Math.ceil(valor);
+    for (let i = 0; i < faltan; i++) html += `<i class="bi bi-star text-warning"></i>`;
+
+    return html;
+  }
+
+  // ============================
+  // MOSTRAR RESEÑA EN TARJETA
+  // ============================
+  function mostrarReseñaEnTarjeta(nombre, rating, texto) {
+    const card = document.getElementById("userReviewCard");
+    const avatar = obtenerAvatar();
+    const estrellas = generarEstrellas(parseFloat(rating));
+
+    card.innerHTML = `
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+
+            <div class="d-flex align-items-center mb-2 w-100">
+              ${avatar}
+              <h5 class="card-title mb-0">${nombre}<br>
+                <span class="text-muted" style="font-size: 1.2rem;">${rating}</span>
+                ${estrellas}
+              </h5>
+            </div>
+
+            <p class="card-text">${texto}</p>
+
+          </div>
+        </div>
+      </div>
+    `;
+
+    card.classList.remove("d-none");
+    document.getElementById("noReviewMsg").classList.add("d-none");
+  }
+
+  function mostrarReseñaEnTarjeta(nombre, rating, texto) {
+
+  const card = document.getElementById("userReviewCard");
+  const avatar = obtenerAvatar();
+  const estrellas = generarEstrellas(parseFloat(rating));
+
+  card.innerHTML = `
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+
+          <div class="d-flex align-items-center mb-2 w-100">
+            ${avatar}
+            <h5 class="card-title mb-0">${nombre}<br>
+              <span class="text-muted" style="font-size: 1.2rem;">${rating}</span>
+              ${estrellas}
+            </h5>
+          </div>
+
+          <p class="card-text">${texto}</p>
+
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Mostrar tarjeta, ocultar mensaje de "sin reseñas"
+  card.classList.remove("d-none");
+  document.getElementById("noReviewMsg").classList.add("d-none");
+}
+
+
+
+  // --- DYNAMIC CONTENT LOADING ---
+
+  const footerHTML = `
+    <footer class="py-5 bg-dark text-white mt-auto border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5><a href="#" class="text-white text-decoration-none" data-page-link="inicio">Guía Cuzco</a></h5>
+                    <p class="text-white-50">Explora el corazón del Imperio Inca. &copy; 2025</p>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <h5>Secciones</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50" data-page-link="inicio">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50" data-page-link="sitios">Sitios Turísticos</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50" data-page-link="platos">Platos Típicos</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50" data-page-link="historia">Historia</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50" data-page-link="reseñas">Reseñas</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <h5>Legal</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Términos y Condiciones</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+  `;
+
+      const pages = {
+        inicio: `<main class="flex-grow-1 d-flex flex-column align-items-center p-0 m-0">
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px;">
+    <h1 class="mt-5">Bienvenido a la Guía de Cuzco</h1>
+    <p>
+      Explora el corazón del Imperio Inca. Esta guía te llevará a descubrir los rincones más emblemáticos 
+      de Cuzco, desde sus imponentes sitios arqueológicos hasta sus calles llenas de historia y cultura viva.
+    </p>
+    <img src="img/machupicchu.jpg" style="height: 350px; width: auto;"
+         alt="Machu Picchu" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <section class="py-5 mt-5">
+    <div class="container text-center">
+      <h2 class="text-center mb-2">Descubre Cuzco con nosotros</h2>
+      <p class="text-muted mb-5">Nuestro sitio te ofrece una experiencia completa para conocer la historia, cultura y lugares de Cuzco de forma clara, visual y moderna.</p>
+
+      <!-- Tres filas de contenido: info, diseño, recursos -->
+      <div class="row align-items-center mb-5">
+        <div class="col-md-6 text-start">
+          <h3 class="fw-bold">📘 Información Clara y Organizada</h3>
+          <p>Accede a secciones bien estructuradas que te permiten explorar la historia, cultura y lugares más emblemáticos sin perderte entre datos dispersos.</p>
+          <p class="text-muted">Todo está pensado para que aprendas rápido y disfrutes del contenido.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="img/estructura.png" class="img-fluid rounded shadow" alt="Organización del contenido">
+        </div>
+      </div>
+
+      <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6 text-start">
+          <h3 class="fw-bold">🖼️ Diseño Visual e Intuitivo</h3>
+          <p>Las imágenes, íconos y colores te guían por la página para que aprendas visualmente, no solo leyendo. Cada parte del sitio está hecha para inspirar y enseñar.</p>
+          <p class="text-muted">Ideal tanto para turistas como para curiosos que quieren conocer más de Cuzco.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="img/visual.png" class="img-fluid rounded shadow" alt="Diseño intuitivo">
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-start">
+          <h3 class="fw-bold">🌐 Enlaces y Recursos Útiles</h3>
+          <p>Explora sitios confiables, fuentes históricas y contenido externo cuidadosamente seleccionado que complementa lo que ves aquí.</p>
+          <p class="text-muted">Aprende más con solo un clic desde nuestras secciones.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="img/recursos.png" class="img-fluid rounded shadow" alt="Recursos y enlaces">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultura viva -->
+  <section class="container py-5">
+    <h2 class="text-center mb-5">Vive la esencia de Cuzco</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/cultura.jpg" class="img-fluid rounded shadow" alt="Cultura Cusqueña">
+      </div>
+      <div class="col-md-6">
+        <h2>Una Cultura Viva</h2>
+        <p class="text-muted">
+          En Cuzco, las tradiciones incas y españolas conviven en perfecta armonía. Las festividades, los textiles, la música 
+          y la gastronomía son parte del legado que los cusqueños mantienen con orgullo.
+        </p>
+        <p class="text-muted">
+          Desde la famosa fiesta del Inti Raymi hasta los mercados artesanales de San Blas, cada experiencia te conecta 
+          con un pasado que sigue latiendo en el presente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitectura incaica -->
+  <section class="container py-5">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/arquitectura.webp" class="img-fluid rounded shadow" alt="Arquitectura Inca" style="width: 100%; height: auto;">
+      </div>
+      <div class="col-md-6">
+        <h2>Arquitectura Incaica</h2>
+        <p class="text-muted">
+          Las piedras de Cuzco hablan. Los muros perfectamente encajados, sin cemento ni mortero, son testimonio 
+          de una ingeniería adelantada a su tiempo.
+        </p>
+        <p class="text-muted">
+          En cada templo, calle y muro, la precisión inca sigue desafiando a los siglos y maravillando a arquitectos y viajeros.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arte y espiritualidad -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="img/arte-espiritualidad.jpg" class="img-fluid rounded shadow" alt="Arte y espiritualidad">
+      </div>
+      <div class="col-md-6">
+        <h2>Arte y Espiritualidad</h2>
+        <p class="text-muted">
+          El arte cusqueño es una fusión de creencias. Iglesias coloniales se levantan sobre antiguos templos incas, 
+          simbolizando siglos de sincretismo espiritual.
+        </p>
+        <p class="text-muted">
+          La Escuela Cusqueña de pintura, con su estilo único, es una de las expresiones artísticas más destacadas de América Latina.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tradiciones y festividades -->
+  <section class="bg-light py-5 w-100">
+    <div class="container text-center">
+      <h2 class="text-center mb-2">Tradiciones que Perduran</h2>
+      <p class="text-muted mb-5" style="max-width: 700px; margin: 0 auto;">
+        Cada mes, Cuzco se viste de fiesta. Las danzas, la música y los colores reflejan el alma del pueblo andino.  
+        Desde el Corpus Christi hasta la Virgen del Carmen, la devoción y la alegría llenan las calles.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <img src="img/inti-raymi.jpg" class="img-fluid rounded shadow-sm" alt="Inti Raymi" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Inti Raymi</h5>
+          <p class="text-muted small">Celebración inca del Sol, símbolo de renacimiento y energía espiritual.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="img/virgen-carmen.jpg" class="img-fluid rounded shadow-sm" alt="Virgen del Carmen" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Virgen del Carmen</h5>
+          <p class="text-muted small">Fiesta llena de color, danza y fe, donde el sincretismo se hace arte vivo.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="img/corpus-christi.jpg" class="img-fluid rounded shadow-sm" alt="Corpus Christi" style="height: 300px; object-fit: cover;">
+          <h5 class="mt-3 fw-bold">Corpus Christi</h5>
+          <p class="text-muted small">Las imágenes de santos recorren la Plaza de Armas en una procesión majestuosa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+              <!-- CTA final -->
+
+              <section class="text-center py-5 container w-75 mb-5 border mt-5">
+
+                <h2 class="fw-bold mb-3">¿Listo para descubrir Cuzco?</h2>
+
+                <p class="text-muted mb-4" style="max-width: 700px; margin: 0 auto;">
+
+                  Tu aventura comienza aquí. Nuestro próximo artículo contiene información sobre los Sitios Turísticos más famosos del Cuzco.
+
+                </p>
+
+                <a href="#" data-page-link="sitios" class="btn btn-primary btn-md">Empieza tu viaje</a>
+
+              </section>
+
+</main>
+`,
+
+        sitios: `<main class="flex-grow-1 p-0 m-0">
+
+      <!-- Hero -->
+      <section class="text-center mb-5" style="max-width: 800px; margin: 0 auto;">
+        <h1 class="mt-5">Sitios Turísticos</h1>
+        <p>
+          Desde Machu Picchu hasta el Valle Sagrado, Cuzco está lleno de tesoros arquitectónicos y paisajes 
+          impresionantes que narran siglos de historia. Cada rincón guarda un pedazo del legado Inca y 
+          colonial, convirtiendo a la ciudad en un museo vivo.
+        </p>
+        <img src="img/sacsayhuaman.JPG" style="height: 350px; width: auto;"
+             alt="Sacsayhuamán" class="img-fluid rounded shadow mt-3">
+      </section>
+
+      <!-- Sitios principales -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-2">Lugares Imperdibles</h2>
+          <p class="text-center text-muted mb-5">
+            Cada uno de estos lugares fue testigo del esplendor del Imperio Inca y conserva la esencia de una civilización que marcó la historia del Perú y del mundo.
+          <div class="row g-4">
+
+            <!-- Machu Picchu -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/machupicchu.jpg" class="card-img-top" alt="Machu Picchu" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Machu Picchu</h5>
+                  <p class="card-text">La joya del Imperio Inca, Patrimonio de la Humanidad y una de las maravillas del mundo moderno.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Construida en el siglo XV por orden de Pachacútec, esta ciudadela se eleva a 2,430 m s. n. m. 
+                    y sigue siendo un misterio sobre cómo se levantó con tal precisión sin herramientas modernas.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Machu_Picchu" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sacsayhuamán -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/sacsayhuaman2.jpg" class="card-img-top" alt="Sacsayhuamán" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Sacsayhuamán</h5>
+                  <p class="card-text">Fortaleza ceremonial inca con bloques de piedra que pesan más de 100 toneladas.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus murallas zigzagueantes representan los dientes del puma, animal sagrado de los incas. 
+                    Ninguna piedra está unida con mortero, y aun así, ni una hoja puede pasar entre ellas.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Sacsayhuam%C3%A1n" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Qoricancha -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/qoricancha.webp" class="card-img-top" alt="Qoricancha" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Qoricancha</h5>
+                  <p class="card-text">El Templo del Sol, centro espiritual más importante del Tahuantinsuyo.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Antiguamente sus muros estaban recubiertos de oro puro. Durante el Inti Raymi, el sol iluminaba 
+                    directamente el altar principal, un logro arquitectónico y astronómico extraordinario.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Qoricancha" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valle Sagrado -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/valle-sagrado.jpg" class="card-img-top" alt="Valle Sagrado de los Incas" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Valle Sagrado de los Incas</h5>
+                  <p class="card-text">Un valle fértil rodeado de montañas y antiguas terrazas agrícolas. Indispensable para los antiguos Incas.  </p>
+                  <hr>
+                  <p class="small text-muted">
+                    Regado por el río Urubamba, conserva pueblos como Pisac y Ollantaytambo. Sus terrazas agrícolas aún se usan, 
+                    y la energía del valle se siente en cada paso.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Valle_Sagrado_de_los_Incas" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ollantaytambo -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/ollantaytambo.webp" class="card-img-top" alt="Ollantaytambo" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Ollantaytambo</h5>
+                  <p class="card-text">Fortaleza, templo y ciudad inca que aún conserva su trazado original.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Fue escenario de la única victoria inca frente a los conquistadores españoles. 
+                    Sus terrazas, canales, calles y su increíble estrtuctura son un testimonio vivo de la ingeniería ancestral.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Ollantaytambo" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pisac -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/pisac.jpg" class="card-img-top" alt="Pisac" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Pisac</h5>
+                  <p class="card-text">Ruinas arqueológicas en la cima de una montaña, junto a un mercado lleno de color y vida.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus terrazas agrícolas, alineadas con las estrellas, servían para probar diferentes microclimas. 
+                    Hoy, su mercado artesanal es uno de los más vibrantes del valle.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Pisac" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Moray -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/moray.jpg" class="card-img-top" alt="Moray" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Moray</h5>
+                  <p class="card-text">Laboratorio agrícola donde los incas experimentaron con la temperatura y la altura.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Cada nivel de sus terrazas circulares crea un microclima distinto, con hasta 15°C de diferencia. 
+                    Un ejemplo de ciencia ancestral aplicada a la agricultura.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Moray_(arqueolog%C3%ADa)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Maras -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/maras.jpg" class="card-img-top" alt="Salineras de Maras" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Salineras de Maras</h5>
+                  <p class="card-text">Miles de pozos de sal formados por un manantial natural en las laderas del valle.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Cada poza pertenece a una familia local. La sal rosada de Maras, rica en minerales, 
+                    es reconocida en todo el mundo por su pureza y color único.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Maras_(Cusco)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+            <!-- Tesoros Ocultos del Cuzco -->
+      <section class="py-5 bg-light border">
+        <div class="container-fluid px-5">
+          <h2 class="text-center mb-2">Tesoros Ocultos del Cuzco</h2>
+          <p class="text-center text-muted mb-5">
+            Rincones menos conocidos pero igualmente asombrosos, donde se revela la habilidad, la fe y la precisión de los antiguos incas.
+          </p>
+
+          <div class="row g-4 justify-content-center">
+
+            <!-- Piedra de los 12 Ángulos -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/piedra-12-angulos.jpg" class="card-img-top" alt="Piedra de los 12 ángulos" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Piedra de los 12 Ángulos</h5>
+                  <p class="card-text">Símbolo de la ingeniería inca y de la perfección en el tallado de piedra.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Situada en la calle Hatun Rumiyoc, esta piedra encaja con precisión absoluta entre otras sin usar ningún tipo de cemento. 
+                    Representa la maestría arquitectónica que desafía el tiempo.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Piedra_de_los_doce_%C3%A1ngulos" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kenko -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/kenko.jpg" class="card-img-top" alt="Kenko" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Q’enqo</h5>
+                  <p class="card-text">Centro ceremonial tallado directamente en roca, usado para rituales religiosos.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Su nombre significa “laberinto”. En su interior hay canales donde corría agua o sangre de sacrificios, 
+                    uniendo la espiritualidad inca con la naturaleza y su profundo sentido del equilibrio cósmico.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Qenqo" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tambomachay -->
+            <div class="col-md-4 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/tambomachay.jpg" class="card-img-top" alt="Tambomachay" style="height: 313.5px; object-fit: cover;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Tambomachay</h5>
+                  <p class="card-text">Conocido como “El Baño del Inca”, dedicado al culto del agua y la purificación.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Sus canales de piedra aún fluyen con agua cristalina. Representa el dominio inca sobre la hidráulica 
+                    y su respeto por los elementos naturales.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Tambomachay" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Cuzco Hoy -->
+      <section class="py-5 border-top">
+        <div class="container">
+          <h2 class="text-center mb-2">Cuzco Hoy</h2>
+          <p class="text-center text-muted mb-5">
+            Más allá de su pasado glorioso, Cuzco vibra con modernidad, aventura y cultura viva. Estos lugares muestran el espíritu actual de la ciudad.
+          </p>
+          <div class="row g-4">
+
+            <!-- Plaza de Armas -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/plaza de armas.jpg" class="card-img-top" alt="Plaza de Armas de Cuzco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Plaza de Armas</h5>
+                  <p class="card-text">Centro histórico y corazón social de la ciudad, rodeado de iglesias y cafés coloniales.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    En tiempos incas fue la plaza principal del imperio. Hoy, es el punto donde se cruzan historia, cultura, 
+                    arte y la vida cotidiana del cuzqueño moderno.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Plaza_de_Armas_del_Cusco" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Catedral del Cuzco -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/catedral.jpg" class="card-img-top" alt="Catedral del Cuzco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Catedral del Cuzco</h5>
+                  <p class="card-text">Una joya del arte colonial que combina iconografía cristiana e incaica.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Construida sobre el antiguo palacio de Viracocha Inca, alberga cuadros de la Escuela Cusqueña, 
+                    donde los artistas locales reinterpretaron la fe con su propio estilo.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Catedral_del_Cusco" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skylodge Adventure Suites -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/skylodge.jpg" class="card-img-top" alt="Skylodge Adventure Suites" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Skylodge Adventure Suites</h5>
+                  <p class="card-text">Cápsulas transparentes colgadas sobre un acantilado en el Valle Sagrado.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    A más de 400 metros de altura, dormir aquí ofrece una vista panorámica única del Urubamba. 
+                    Es una experiencia moderna que combina adrenalina y naturaleza.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Skylodge_Adventure_Suites" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tren a Machu Picchu -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/tren-machu-picchu.jpg" class="card-img-top" alt="Tren a Machu Picchu" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Tren a Machu Picchu</h5>
+                  <p class="card-text">Un recorrido escénico que une el pasado y el presente a través del Valle Sagrado.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Con vistas espectaculares, este viaje ferroviario es una de las experiencias más populares 
+                    para los viajeros que buscan llegar al santuario inca con estilo y comodidad.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/PeruRail" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mirador de Cristo Blanco -->
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm border-0">
+                <img src="img/cristo-blanco.jpg" class="card-img-top" alt="Cristo Blanco" style="height: 313.5px;">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Mirador de Cristo Blanco</h5>
+                  <p class="card-text">Una estatua monumental que observa la ciudad desde las alturas, símbolo de paz y protección.</p>
+                  <hr>
+                  <p class="small text-muted">
+                    Ubicada a pocos minutos del centro histórico, ofrece una vista panorámica de todo el Cuzco. 
+                    Su figura blanca resalta entre las montañas, siendo uno de los lugares más visitados al atardecer.
+                  </p>
+                  <a href="https://es.wikipedia.org/wiki/Cristo_Blanco_(Cusco)" target="_blank" class="btn btn-primary btn-sm">Saber más</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+<!-- CTA final Sitios -->
+<section class="text-center py-5 container w-75 mb-5 border">
+  <h2 class="fw-bold">¿Qué tal un bocado?</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Después de tanta exploración, es hora de recargar energías. Descubre los sabores únicos de la gastronomía cusqueña en nuestro próximo artículo.
+  </p>
+  <a href="#" data-page-link="platos" class="btn btn-primary btn-md mt-3">Probar los platos típicos</a>
+</section>
+
+    </main>`,
+
+        platos: `
+<main class="flex-grow-1 p-0 m-0">
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+    <h1 class="mt-5">Restaurantes en Cuzco</h1>
+    <p>
+      La gastronomía cuzqueña fusiona tradición e innovación. Aquí podrás disfrutar de platos 
+      típicos como el cuy al horno, la trucha andina o el chiri uchu, junto a experiencias gourmet 
+      en restaurantes de prestigio internacional.
+    </p>
+    <img src="img/cuy chactado.jpg" style="height: 350px; width: auto;"
+         alt="Plato típico de Cuy" class="img-fluid rounded shadow mt-3 mb-5">
+  </div>
+
+<!-- Sabores del Cuzco -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Sabores del Cuzco</h2>
+    <p class="text-center text-muted mb-5">
+      La gastronomía cusqueña mezcla tradición, historia y productos del Ande que han perdurado por siglos.
+    </p>
+
+    <!-- Plato 1 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/cuy.jpg" alt="Cuy chactado" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Cuy Chactado</h4>
+        <hr>
+        <p>
+          Un clásico del sur andino. El cuy, frito hasta quedar crujiente, se sirve con papas doradas y ensalada.
+          Es símbolo de celebración y respeto a la tradición incaica.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 2 -->
+    <div class="row align-items-center flex-row-reverse mb-5">
+      <div class="col-md-6">
+        <img src="img/chiriuchu.jpg" alt="Chiri uchu" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Chiri Uchu</h4>
+        <hr>
+        <p>
+          Plato emblemático del Corpus Christi. Se sirve frío e incluye cuy, gallina, queso, maíz tostado, rocoto y torrejas.
+          Representa la unión de las culturas andina e hispana.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 3 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/adobo.jpg" alt="Adobo cusqueño" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Adobo Cusqueño</h4>
+        <hr>
+        <p>
+          Guiso de cerdo marinado en chicha de jora y ají panca. Se disfruta especialmente los domingos por la mañana en los pueblos del Valle Sagrado.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 4 -->
+    <div class="row align-items-center flex-row-reverse mb-5">
+      <div class="col-md-6">
+        <img src="img/olluquito-charqui.jpg" alt="Olluquito con charqui" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Olluquito con Charqui</h4>
+        <hr>
+        <p>
+          Preparado con olluco (un tubérculo andino) y carne seca de alpaca. Un plato que combina sabor y herencia ancestral.
+        </p>
+      </div>
+    </div>
+
+    <!-- Plato 5 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <img src="img/chicharron-cusqueno.jpg" alt="Chicharrón cusqueño" class="img-fluid rounded shadow" style="height: 400px;">
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Chicharrón Cusqueño</h4>
+        <hr>
+        <p>
+          Carne de cerdo frita en su propia grasa, servida con mote, zarza y hierba buena. Tradicional en fiestas y domingos familiares.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Alimentos Ancestrales -->
+<section class="py-5 bg-light border mb-5 ">
+  <div class="container">
+    <h2 class="text-center mb-3">Alimentos Ancestrales Andinos</h2>
+    <p class="text-center text-muted mb-5">
+      Los incas dominaron la agricultura de altura, creando una dieta rica en nutrientes que aún forma parte de la mesa cusqueña.
+    </p>
+
+    <div class="row g-4">
+      <!-- Papa Nativa -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/papa.jpg" class="card-img-top" alt="Papa nativa" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Papa Nativa</h5>
+            <p class="small text-muted">Más de 3,000 variedades de papa se cultivan en el Perú, muchas originarias del Cuzco.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maíz Cusqueño -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/choclo.jpg" class="card-img-top" alt="Choclo" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Choclo</h5>
+            <p class="small text-muted">Famoso por su grano gigante y sabor suave. Es base de bebidas como la chicha de jora.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quinua -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/quinua.jpg" class="card-img-top" alt="Quinua" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Quinua</h5>
+            <p class="small text-muted">El “grano de oro” de los Andes. Fuente de proteína, energía y tradición milenaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarwi -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/tarwi.jpg" class="card-img-top" alt="Tarwi" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Tarwi</h5>
+            <p class="small text-muted">Leguminosa rica en proteínas que los incas usaban como base en su alimentación diaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoja de Coca -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/hoja-coca.jpg" class="card-img-top" alt="Hoja de coca" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Hoja de Coca</h5>
+            <p class="small text-muted">Sagrada para los incas, usada para aliviar el cansancio, el mal de altura y en rituales ancestrales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kiwicha -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <img src="img/kiwicha.jpg" class="card-img-top" alt="Kiwicha" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Kiwicha</h5>
+            <p class="small text-muted">
+              También conocida como amaranto andino, era considerada un alimento sagrado por los incas por su alto valor nutritivo y su resistencia al clima.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="text-center py-5 container w-75 mb-5 border">
+  <h2 class="fw-bold">Sigue explorando Cuzco</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Ahora que conoces los deliciosos platos típicos, descubre la rica historia que dio forma a la ciudad imperial de Cuzco.
+  </p>
+  <a href="#" data-page-link="historia" class="btn btn-primary btn-md mt-3">Descubre la historia</a>
+</section>
+</main>
+`,
+        historia: `
+<main class="flex-grow-1 p-0 m-0">
+  <!-- Hero -->
+  <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+    <h1 class="mt-5">Historia de Cuzco</h1>
+    <p>
+      Conocida como la capital del Imperio Inca, Cuzco fue el centro político, militar y cultural 
+      más importante de los Andes. Tras la llegada de los españoles, la ciudad se transformó en un 
+      punto de encuentro entre dos mundos, dejando una mezcla única de estilos y tradiciones.
+    </p>
+    <img src="img/catedral.JPG" style="height: 350px; width: auto;"
+         alt="Catedral del Cuzco" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <!-- Origen -->
+  <section class="py-5 mx-auto">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-6">
+
+          <h2>Origen del Cuzco</h2>
+
+          <p>
+            Cuzco fue fundada por Manco Cápac, según la leyenda, hijo del dios Sol. Desde sus inicios 
+            se consolidó como el centro del Tahuantinsuyo, reuniendo poder, cultura y religión.
+          </p>
+
+          <p>
+            Todo comenzó como un simple asentamiento en un valle fértil, rodeado de montañas y ríos.
+            La ciudad creció con planificación urbana, templos y plazas, consolidándose como corazón del imperio.
+          </p>
+
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-4">
+          <img src="img/valle-sagrado.jpg" class="img-fluid rounded shadow" alt="Referencia Origen Cuzco" style="height: 250px; width: auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo vivían -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2>Cómo vivían</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <img src="img/vivienda-inca.jpg" class="card-img-top" alt="Vivienda Inca" style="height: 410px; width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Vivienda</h5>
+              <hr>
+              <p class="card-text">
+                Casas de piedra con techos de ichu (paja), una sola habitación rectangular con nichos en las paredes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <img src="img/alimentacion.jpg" class="card-img-top" alt="Alimentación Inca" style="height: 410px; width: auto; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Alimentación</h5>
+              <hr>
+              <p class="card-text">
+                Papas, maíz, quinua, carne de llama y cuy. La chicha de jora era la bebida ceremonial principal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+  <div class="container">
+    <h2>Lista de los Incas</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- 1. Manco Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/manco-capac.jpg" class="card-img-top" alt="Manco Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Manco Cápac</h5>
+            <hr>
+            <p class="card-text">Fundador del Imperio Inca. Considerado hijo del Sol.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Sinchi Roca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/sinchi-roca.jpg" class="card-img-top" alt="Sinchi Roca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sinchi Roca</h5>
+            <hr>
+            <p class="card-text">Hijo de Manco Cápac. Instituyó el uso del calendario agrícola.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Lloque Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/lloque-yupanqui.jpg" class="card-img-top" alt="Lloque Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Lloque Yupanqui</h5>
+            <hr>
+            <p class="card-text">Reorganizó el gobierno y mejoró la agricultura.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Mayta Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/mayta-capac.jpg" class="card-img-top" alt="Mayta Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mayta Cápac</h5>
+            <hr>
+            <p class="card-text">Reconocido por su fuerza y carácter militar. Expansión temprana.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Cápac Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/capac-yupanqui.jpg" class="card-img-top" alt="Cápac Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cápac Yupanqui</h5>
+            <hr>
+            <p class="card-text">Primer Inca en llevar campañas militares fuera del Cusco.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Inca Roca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/inca-roca.jpg" class="card-img-top" alt="Inca Roca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Inca Roca</h5>
+            <hr>
+            <p class="card-text">Estableció la nobleza de sangre y sistema de educación.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Yahuar Huácac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/yahuar-huacac.jpg" class="card-img-top" alt="Yahuar Huácac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Yahuar Huácac</h5>
+            <hr>
+            <p class="card-text">Secuestrado en su infancia. Su nombre significa “el que llora sangre”.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Huiracocha Inca -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/wiracocha.jpg" class="card-img-top" alt="Wiracocha Inca" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Wiracocha Inca</h5>
+            <hr>
+            <p class="card-text">Abandonó Cusco frente al ataque chanca. Padre de Pachacútec.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Pachacútec -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/pachacutec.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pachacútec</h5>
+            <hr>
+            <p class="card-text">Gran reformador del imperio. Constructor de Machu Picchu.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Amaru Inca Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/amaru-inca.jpg" class="card-img-top" alt="Amaru Inca Yupanqui" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Amaru Inca Yupanqui</h5>
+            <hr>
+            <p class="card-text">Hijo de Pachacútec. Gobernó brevemente antes de ser reemplazado.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Túpac Inca Yupanqui -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/tupac-yupanqui.jpg" class="card-img-top" alt="Túpac Inca Yupanqui" style="height: 250px; object-fit: cover; object-position: top;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Túpac Inca Yupanqui</h5>
+            <hr>
+            <p class="card-text">Hijo de Pachacútec. Expansión del imperio hasta Ecuador y Argentina.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Huayna Cápac -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/huayna-capac.jpg" class="card-img-top" alt="Huayna Cápac" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Huayna Cápac</h5>
+            <hr>
+            <p class="card-text">Gobernó durante la máxima extensión del Tahuantinsuyo. Murió por epidemia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Huáscar -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/huascar.jpg" class="card-img-top" alt="Huáscar" style="height: 250px; object-fit: cover; object-position: center;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Huáscar</h5>
+            <hr>
+            <p class="card-text">Hijo legítimo de Huayna Cápac. Perdió la guerra civil contra Atahualpa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Atahualpa -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="img/atahualpa.png" class="card-img-top" alt="Atahualpa" style="height: 250px; object-fit: cover; object-position: top;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Atahualpa</h5>
+            <hr>
+            <p class="card-text">Último Inca. Capturado y ejecutado por los españoles en Cajamarca.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Costumbres -->
+  <section class="py-5">
+    <div class="container">
+
+      <h2>Costumbres</h2>
+
+      <p>
+        Los incas tenían rituales religiosos, festivales como Inti Raymi, uso de quipus para contabilidad, 
+        y la mita como sistema de trabajo comunitario obligatorio.
+      </p>
+
+          <img src="img/inti-raymi.jpg" style="height: 350px; width: auto;"
+         alt="Inti Raymi" class="img-fluid rounded shadow mt-3">
+
+    </div>
+
+  </section>
+
+  <!-- Cosas resaltantes -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2>Cosas Resaltantes</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/qhapaq-ñan.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Qhapaq Ñan</h5>
+              <hr>
+              <p class="card-text">
+                Red de más de 30,000 km de caminos que conectaba todo el imperio, incluyendo tambos y chasquis.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/terrazas.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Terrazas Agrícolas</h5>
+              <hr>
+              <p class="card-text">
+                Sistema de agricultura en terrazas que optimizaba el uso del terreno montañoso.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="img/medicina.jpg" class="card-img-top" alt="Pachacútec" style="height: 250px; object-fit: cover; object-position: center;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Medicina Ancestral</h5>
+              <hr>
+              <p class="card-text">
+                Uso de plantas medicinales, cirugías craneales y tratamientos avanzados para la época.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+<section class="text-center py-5 container w-75 mb-5 border mt-5">
+  <h2 class="fw-bold">¿Qué opinan otros viajeros?</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Ve a nuestro artículos de reseñas para conocer las experiencias, opiniones y recomendaciones de otros viajeros en Cuzco.
+  </p>
+  <a href="#" data-page-link="reseñas" class="btn btn-primary btn-md mt-3">Leer Reseñas</a>
+</section>
+</main>
+`,
+        reseñas: `
+<main class="flex-grow-1 p-0 m-0">
+  <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+    <h1 class="mt-5">Reseñas de Visitantes</h1>
+    <p>
+      Miles de viajeros comparten sus experiencias al recorrer Cuzco. Desde la emoción de subir a 
+      Machu Picchu al amanecer, hasta la calidez de la gente local, cada reseña refleja la magia que 
+      hace de este lugar un destino inolvidable.
+    </p>
+    <img src="img/plaza de armas.jpg" style="height: 350px; width: auto;"
+         alt="Plaza de Armas de Cuzco" class="img-fluid rounded shadow mt-3">
+  </div>
+
+  <section class="container my-5">
+  <h2 class="text-center mb-4">Lo que dicen nuestros visitantes</h2>
+
+  <div class="row g-4">
+
+    <!-- Comentario 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+
+          <div class="d-flex align-items-center mb-2 w-100">
+            <div class="rounded-circle bg-warning me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">L</div>
+
+          <h5 class="card-title mb-0">Andrea M.<br>
+          
+          <span class="text-muted" style="font-size: 1.2rem;">5.0</span>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+
+          </h5>
+
+          </div>
+
+          <p class="card-text">
+            Visitar Cuzco fue una experiencia que nunca voy a olvidar. Desde la calidez de su gente hasta la majestuosidad de sus paisajes, todo fue increíble. La caminata por el Valle Sagrado y el tour a Machu Picchu al amanecer me dejaron sin palabras. Recomiendo llevar ropa de colores claros, el sol te puede quemar si llevas ropa de colores oscuros como el negro o azul oscuro, sobre todo, tomarse el tiempo para disfrutar cada rincón con calma. ¡Volvería mil veces!
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Comentario 2 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-success me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">R</div>
+          
+          <h5 class="card-title mb-0">Carlos R.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.5</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+
+        <p class="card-text">
+          Si estás pensando en visitar Cuzco, no lo dudes. Me sorprendió lo bien organizado que estaba todo, especialmente los servicios turísticos. Lo mejor fue la arquitectura y descubrir el pasado; hay algo especial en ese lugar. Recomiendo probar la gastronomía local, en especial el cuy y la chicha morada. Consejo: aclimátate uno o dos días antes de ir a los sitios turísticos, te pueden dar mareos por la altura, recomiendo muña para calmar el mareo.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 3 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-primary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px; object-fit: cover;">L</div>
+          
+          <h5 class="card-title mb-0">Lucía G.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.8</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+
+        <p class="card-text">
+          Fue mi primer viaje sola y no pude haber elegido mejor destino. Me sentí segura en todo momento y encontré otros viajeros con quienes compartir excursiones. Me encantó caminar por las calles empedradas del centro de Cuzco, entrar en sus museos y descubrir cada detalle de la historia inca. Mi recomendación es ir los meses desde Abril a Octubre, hace un clima perfecto idea para ver los hermosos paisajes.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+<div class="row g-4 mt-3">
+
+  <!-- Comentario 4 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-danger me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">J</div>
+          <h5 class="card-title mb-0">Javier T.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.9</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          No hay palabras suficientes para describir lo que se siente estar en Cuzco. Desde los templos incas hasta las montañas que parecen tocar el cielo, todo tiene una energía especial. Hice el recorrido por Sacsayhuamán y Qenqo, y quedé impresionado con la historia que se respira. Recomiendo llevar abrigo para la noche, ya que baja bastante la temperatura, y tener siempre una botella de agua. La combinación de cultura, paisaje y hospitalidad lo hace inolvidable.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 5 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-info me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">M</div>
+          <h5 class="card-title mb-0">Mariela V.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">5.0</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          Quedé fascinada con la armonía entre lo antiguo y lo moderno en Cuzco. Los mercados son un espectáculo de colores y aromas, especialmente el de San Pedro, donde probé platillos que nunca había visto. El trato de los locales fue encantador, siempre dispuestos a ayudar. Me encantó visitar los museos y caminar por las calles de piedra iluminadas al atardecer. Consejo: reserva con tiempo las entradas a Machu Picchu y lleva calzado cómodo, lo agradecerás.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentario 6 -->
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-2 w-100">
+          <div class="rounded-circle bg-secondary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">E</div>
+          <h5 class="card-title mb-0">Ernesto P.<br>
+            <span class="text-muted" style="font-size: 1.2rem;">4.7</span>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-half text-warning"></i>
+          </h5>
+        </div>
+        <p class="card-text">
+          Cuzco tiene una vibra diferente, como si el tiempo se detuviera. Me encantó la excursión a Maras y Moray, con esos paisajes que parecen de otro planeta. La historia inca está viva en cada muro y cada camino. Recomiendo llevar efectivo, porque en los pueblos pequeños no siempre aceptan tarjeta, y no perderse los atardeceres desde San Blas, donde el cielo se tiñe de tonos dorados y rosados. Sin duda, uno de los mejores viajes de mi vida.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+
+<!-- CTA final -->
+<section class="text-center py-5 container w-75 mb-5 border">
+  <h2 class="fw-bold">¿Disfrutaste tu viaje?</h2>
+  <p class="text-muted mb-2" style="max-width: 700px; margin: 0 auto;">
+    Tu opinión es importante. Comparte tu experiencia para ayudar a otros viajeros a descubrir lo mejor de Cuzco.
+  </p>
+  <div class="d-flex gap-2 justify-content-center mt-3">
+    <a href="#" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#writeReviewModal">Escribe tu reseña</a>
+    <a href="#" data-page-link="inicio" class="btn btn-outline-secondary btn-md">Volver al Inicio</a>
+  </div>
+</section>
+
+<section class="py-5 container w-75 mb-5">
+    <h2 class="text-center mb-4">Mi reseña sobre el Cuzco</h2>
+
+  <!-- Aquí se insertará la reseña del usuario -->
+  <div id="userReviewCard" class="row g-4  mb-4 d-none"></div>
+
+  <!-- Si no creas una reseña, se mostrará este mensaje -->
+  <p id="noReviewMsg" class="text-center text-muted">
+  Aún no has escrito una reseña. ¿Quieres compartir tu experiencia?
+</p>
+
+</section>
+</main>
+`,
+      };
+
+      function loadPage(page) {
+        mainContent.style.opacity = 0;
+        setTimeout(() => {
+            const content = pages[page] || pages['inicio'];
+            mainContent.innerHTML = content + footerHTML;
+            mainContent.style.opacity = 1;
+            
+            document.querySelectorAll('#sidebarLinks a[data-page]').forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`#sidebarLinks a[data-page="${page}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }, 250);
+      }
+
+      // Event delegation for all navigation links
+      document.body.addEventListener('click', e => {
+        const pageLink = e.target.closest('a[data-page], a[data-page-link]');
+        if (pageLink) {
+            e.preventDefault();
+            const page = pageLink.dataset.page || pageLink.dataset.pageLink;
+            if (page) {
+                loadPage(page);
+            }
+        }
+      });
+
+      // Carga inicial
+      loadPage('inicio');
+    });
+    </script>
   </body>
 </html>
+
