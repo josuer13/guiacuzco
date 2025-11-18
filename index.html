@@ -395,341 +395,294 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script> document.addEventListener("DOMContentLoaded", () => {
 
-  // ============================
-  // ELEMENTOS DEL USUARIO
-  // ============================
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // elementos principales (pueden existir siempre)
   const perfil = document.getElementById("profile-name");
-  const signUpForm = document.getElementById("signUpForm");
   const authButtons = document.getElementById("authButtons");
   const logoutLink = document.getElementById("logoutLink");
   const logoutDivider = document.getElementById("logoutDivider");
-
-  const editUser = document.getElementById("editUser");
-  const editName = document.getElementById("editName");
-  const reviewsLink = document.getElementById("reviewsLink");
-  const editProfileLink = document.getElementById("editProfileLink");
-
   const sidebarProfileIcon = document.getElementById("sidebarProfileIcon");
   const sidebarProfileImg = document.getElementById("sidebarProfileImg");
   const editProfileImg = document.getElementById("editProfileImg");
+  const mainContent = document.getElementById("mainContent");
+  const darkModeSwitch = document.getElementById("darkModeSwitch");
+
+  // elementos que pueden estar en modales (comprobar antes de usar)
+  const signUpForm = document.getElementById("signUpForm");
+  const editProfileForm = document.getElementById("editProfileForm");
   const editPhotoInput = document.getElementById("editPhotoInput");
   const changePasswordForm = document.getElementById("changePasswordForm");
 
-  const darkModeSwitch = document.getElementById("darkModeSwitch");
+  // enlaces protegidos/usuario
+  const reviewsLink = document.getElementById("reviewsLink");
+  const editProfileLink = document.getElementById("editProfileLink");
 
-  // ============================
-  // ESTADO DEL USUARIO
-  // ============================
+  // estado de usuario
   let usuario = "";
   let nombre = "";
   let foto = "";
   let passwordActual = "";
   let nuevaFoto = false;
 
-  // ============================
-  // ACTUALIZAR ESTADO
-  // ============================
-  function updateUserState(loggedIn) {
-
-    if (loggedIn) {
-      authButtons.classList.add("d-none");
-
-      reviewsLink.classList.remove("disabled");
-      editProfileLink.classList.remove("disabled");
-      reviewsLink.removeAttribute("tabindex");
-      editProfileLink.removeAttribute("tabindex");
-
-      logoutLink.parentElement.classList.remove("d-none");
-      logoutDivider.classList.remove("d-none");
-
-      perfil.textContent = nombre;
-      editUser.value = usuario;
-      editName.value = nombre;
-
-      if (foto) {
-        sidebarProfileImg.src = foto;
-        sidebarProfileImg.classList.remove("d-none");
-        sidebarProfileIcon.classList.add("d-none");
-      } else {
-        sidebarProfileImg.classList.add("d-none");
-        sidebarProfileIcon.classList.remove("d-none");
-      }
-
-    } else {
-      authButtons.classList.remove("d-none");
-
-      reviewsLink.classList.add("disabled");
-      editProfileLink.classList.add("disabled");
-      reviewsLink.setAttribute("tabindex", "-1");
-      editProfileLink.setAttribute("tabindex", "-1");
-
-      logoutLink.parentElement.classList.add("d-none");
-      logoutDivider.classList.add("d-none");
-
-      perfil.textContent = "Perfil";
-      usuario = "";
-      nombre = "";
-      foto = "";
-      passwordActual = "";
-
-      sidebarProfileImg.classList.add("d-none");
-      sidebarProfileIcon.classList.remove("d-none");
-      sidebarProfileImg.src = "";
-      editProfileImg.src = "img/perfil.png";
-    }
-
-    const userReviewCard = document.getElementById("userReviewCard");
-    const noReviewMsg = document.getElementById("noReviewMsg");
-
-    if (userReviewCard) {
-      userReviewCard.classList.add("d-none");
-      userReviewCard.innerHTML = "";
-    }
-
-    if (noReviewMsg) noReviewMsg.classList.remove("d-none");
+  // UTIL: generar estrellas
+  function generarEstrellas(valor) {
+    let html = "";
+    const entero = Math.floor(valor);
+    const decimal = valor - entero;
+    for (let i = 0; i < entero; i++) html += '<i class="bi bi-star-fill text-warning"></i>';
+    if (decimal >= 0.5) html += '<i class="bi bi-star-half text-warning"></i>';
+    const faltan = 5 - Math.ceil(valor);
+    for (let i = 0; i < faltan; i++) html += '<i class="bi bi-star text-warning"></i>';
+    return html;
   }
 
+  // UTIL: avatar html (inicial o foto)
+  function obtenerAvatarHtml() {
+    if (foto && foto.trim() !== "") {
+      return `<img src="${foto}" class="rounded-circle me-3" style="width:50px;height:50px;object-fit:cover;">`;
+    }
+    const inicial = (nombre || "U").charAt(0).toUpperCase();
+    return `<div class="rounded-circle bg-primary me-3 text-center text-light fs-1 fw-medium" style="width:50px;height:50px;">${inicial}</div>`;
+  }
+
+  // Mostrar reseña (tarjeta visual) segura
+  function mostrarReseñaEnTarjeta(nombreGlobal, rating, texto) {
+    const card = document.getElementById("userReviewCard");
+    const noReviewMsg = document.getElementById("noReviewMsg");
+    if (!card) return;
+    const estrellas = generarEstrellas(parseFloat(rating));
+    const avatar = obtenerAvatarHtml();
+    card.innerHTML = `
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2 w-100">
+              ${avatar}
+              <h5 class="card-title mb-0">${nombreGlobal}<br>
+                <span class="text-muted" style="font-size:1.2rem;">${rating}</span>
+                ${estrellas}
+              </h5>
+            </div>
+            <p class="card-text">${texto}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    card.classList.remove("d-none");
+    if (noReviewMsg) noReviewMsg.classList.add("d-none");
+  }
+
+  // Actualizar UI según login/logout
+  function updateUserState(loggedIn) {
+    if (loggedIn) {
+      if (authButtons) authButtons.classList.add("d-none");
+      if (reviewsLink) reviewsLink.classList.remove("disabled");
+      if (editProfileLink) editProfileLink.classList.remove("disabled");
+      if (reviewsLink) reviewsLink.removeAttribute("tabindex");
+      if (editProfileLink) editProfileLink.removeAttribute("tabindex");
+      if (logoutLink && logoutLink.parentElement) logoutLink.parentElement.classList.remove("d-none");
+      if (logoutDivider) logoutDivider.classList.remove("d-none");
+      if (perfil) perfil.textContent = nombre || usuario || "Perfil";
+      if (editProfileForm) {
+        const eu = document.getElementById("editUser");
+        const en = document.getElementById("editName");
+        if (eu) eu.value = usuario;
+        if (en) en.value = nombre || usuario;
+      }
+      if (foto) {
+        if (sidebarProfileImg) { sidebarProfileImg.src = foto; sidebarProfileImg.classList.remove("d-none"); }
+        if (sidebarProfileIcon) sidebarProfileIcon.classList.add("d-none");
+      } else {
+        if (sidebarProfileImg) sidebarProfileImg.classList.add("d-none");
+        if (sidebarProfileIcon) sidebarProfileIcon.classList.remove("d-none");
+      }
+    } else {
+      if (authButtons) authButtons.classList.remove("d-none");
+      if (reviewsLink) { reviewsLink.classList.add("disabled"); reviewsLink.setAttribute("tabindex", "-1"); }
+      if (editProfileLink) { editProfileLink.classList.add("disabled"); editProfileLink.setAttribute("tabindex", "-1"); }
+      if (logoutLink && logoutLink.parentElement) logoutLink.parentElement.classList.add("d-none");
+      if (logoutDivider) logoutDivider.classList.add("d-none");
+      usuario = ""; nombre = ""; foto = ""; passwordActual = ""; nuevaFoto = false;
+      if (perfil) perfil.textContent = "Perfil";
+      if (sidebarProfileIcon) sidebarProfileIcon.classList.remove("d-none");
+      if (sidebarProfileImg) { sidebarProfileImg.classList.add("d-none"); sidebarProfileImg.src = ""; }
+      if (editProfileImg) editProfileImg.src = "img/perfil.png";
+
+      // reset reseñas UI (solo si existen elementos)
+      const userReviewCard = document.getElementById("userReviewCard");
+      const noReviewMsg = document.getElementById("noReviewMsg");
+      if (userReviewCard) {
+        userReviewCard.classList.add("d-none");
+        userReviewCard.innerHTML = "";
+      }
+      if (noReviewMsg) noReviewMsg.classList.remove("d-none");
+    }
+  }
+
+  // Inicial
   updateUserState(false);
 
-  // ============================
-  // LOGOUT
-  // ============================
-  logoutLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    updateUserState(false);
-    alert("Has cerrado sesión.");
-  });
+  // === EVENTOS SEGUROS ===
 
-  // ============================
-  // CREAR CUENTA / LOGIN
-  // ============================
-  signUpForm.addEventListener("submit", e => {
-    e.preventDefault();
+  // Logout (si existe)
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      updateUserState(false);
+      if (typeof loadPage === "function") loadPage('inicio');
+      alert("Has cerrado sesión.");
+    });
+  }
 
-    usuario = document.getElementById("newuser").value.trim() || "usuario";
-    nombre = document.getElementById("newname").value.trim() || usuario;
-    passwordActual = document.getElementById("newpassword").value.trim();
+  // Sign up (si existe)
+  if (signUpForm) {
+    signUpForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const nu = document.getElementById("newuser");
+      const nn = document.getElementById("newname");
+      const np = document.getElementById("newpassword");
+      usuario = nu ? (nu.value.trim() || "usuario") : "usuario";
+      nombre = nn ? (nn.value.trim() || usuario) : usuario;
+      passwordActual = np ? np.value.trim() : "";
+      alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}`);
+      const modalEl = document.getElementById("signUpModal");
+      if (modalEl) {
+        const inst = bootstrap.Modal.getInstance(modalEl) || bootstrap.Modal.getOrCreateInstance(modalEl);
+        inst.hide();
+      }
+      updateUserState(true);
+    });
+  }
 
-    alert(`Cuenta creada con éxito.\n\nUsuario: ${usuario}\nNombre: ${nombre}`);
+  // Edit profile (si existe)
+  if (editProfileForm) {
+    editProfileForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const en = document.getElementById("editName");
+      const nuevoNombre = en ? (en.value.trim() || usuario) : usuario;
+      let mensaje = "No hiciste ningún cambio.";
+      if (nuevoNombre !== nombre && nuevaFoto) mensaje = "Tu nombre y foto se han actualizado correctamente.";
+      else if (nuevoNombre !== nombre) mensaje = "Tu nombre se ha actualizado correctamente.";
+      else if (nuevaFoto) mensaje = "Tu foto de perfil se ha actualizado correctamente.";
+      nombre = nuevoNombre;
+      if (perfil) perfil.textContent = nombre;
+      nuevaFoto = false;
+      alert(mensaje);
+      const modalEl = document.getElementById("editProfileModal");
+      if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+    });
+  }
 
-    bootstrap.Modal.getInstance(document.getElementById("signUpModal")).hide();
-
-    updateUserState(true);
-  });
-
-  // ============================
-  // DARK MODE
-  // ============================
-  darkModeSwitch.removeAttribute('disabled');
-  darkModeSwitch.addEventListener('change', () => {
-    if (darkModeSwitch.checked) {
-      document.documentElement.setAttribute('data-bs-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-bs-theme', 'light');
-    }
-  });
-
-  // ============================
-  // EDITAR PERFIL
-  // ============================
-  document.getElementById("editProfileForm").addEventListener("submit", e => {
-    e.preventDefault();
-
-    const nuevoNombre = editName.value.trim() || usuario;
-    let mensaje = "";
-
-    if (nuevoNombre !== nombre && nuevaFoto) {
-      mensaje = "Tu nombre y foto se han actualizado correctamente.";
-    } else if (nuevoNombre !== nombre) {
-      mensaje = "Tu nombre se ha actualizado correctamente.";
-    } else if (nuevaFoto) {
-      mensaje = "Tu foto de perfil se ha actualizado correctamente.";
-    } else {
-      mensaje = "No hiciste ningún cambio.";
-    }
-
-    nombre = nuevoNombre;
-    perfil.textContent = nombre;
-    nuevaFoto = false;
-
-    alert(mensaje);
-    bootstrap.Modal.getInstance(document.getElementById("editProfileModal")).hide();
-  });
-
-  // ============================
-  // CAMBIAR FOTO
-  // ============================
-  editPhotoInput.addEventListener("change", e => {
-    const file = e.target.files[0];
-
-    if (file) {
+  // editPhotoInput (si existe)
+  if (editPhotoInput) {
+    editPhotoInput.addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
       const reader = new FileReader();
-
       reader.onload = ev => {
         foto = ev.target.result;
         nuevaFoto = true;
-        sidebarProfileImg.src = foto;
-        sidebarProfileImg.classList.remove("d-none");
-        sidebarProfileIcon.classList.add("d-none");
-        editProfileImg.src = foto;
+        if (sidebarProfileImg) { sidebarProfileImg.src = foto; sidebarProfileImg.classList.remove("d-none"); }
+        if (sidebarProfileIcon) sidebarProfileIcon.classList.add("d-none");
+        if (editProfileImg) editProfileImg.src = foto;
       };
-
       reader.readAsDataURL(file);
-    }
-  });
+    });
+  }
 
-  // ============================
-  // CAMBIAR PASSWORD
-  // ============================
-  changePasswordForm.addEventListener("submit", e => {
-    e.preventDefault();
+  // changePasswordForm (si existe)
+  if (changePasswordForm) {
+    changePasswordForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const actual = document.getElementById("currentPassword")?.value.trim() || "";
+      const nueva = document.getElementById("newPassword")?.value.trim() || "";
+      const confirmar = document.getElementById("confirmPassword")?.value.trim() || "";
+      if (!actual || !nueva || !confirmar) { alert("Por favor completa todos los campos."); return; }
+      if (actual !== passwordActual) { alert("La contraseña actual es incorrecta."); return; }
+      if (nueva.length < 6) { alert("La nueva contraseña debe tener al menos 6 caracteres."); return; }
+      if (nueva !== confirmar) { alert("Las contraseñas nuevas no coinciden."); return; }
+      passwordActual = nueva;
+      alert("Tu contraseña se ha cambiado exitosamente.");
+      const modalEl = document.getElementById("changePasswordModal");
+      if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+      changePasswordForm.reset();
+    });
+  }
 
-    const actual = document.getElementById("currentPassword").value.trim();
-    const nueva = document.getElementById("newPassword").value.trim();
-    const confirmar = document.getElementById("confirmPassword").value.trim();
+  // Dark mode switch (si existe)
+  if (darkModeSwitch) {
+    darkModeSwitch.removeAttribute('disabled');
+    darkModeSwitch.addEventListener('change', () => {
+      if (darkModeSwitch.checked) document.documentElement.setAttribute('data-bs-theme', 'dark');
+      else document.documentElement.setAttribute('data-bs-theme', 'light');
+    });
+  }
 
-    if (!actual || !nueva || !confirmar) {
-      alert("Por favor completa todos los campos.");
-      return;
-    }
+  // === RESEÑAS: handlers seguros ===
 
-    if (actual !== passwordActual) {
-      alert("La contraseña actual es incorrecta.");
-      return;
-    }
+  // Cuando se abre el modal de escribir reseña, prellenar nombre (si existe)
+  const writeReviewModal = document.getElementById("writeReviewModal");
+  if (writeReviewModal) {
+    writeReviewModal.addEventListener("show.bs.modal", () => {
+      const reviewNameInp = document.getElementById("reviewName");
+      if (reviewNameInp) reviewNameInp.value = nombre || "Invitado";
+    });
+  }
 
-    if (nueva.length < 6) {
-      alert("La nueva contraseña debe tener al menos 6 caracteres.");
-      return;
-    }
+  // Envío de reseña (si existe el form)
+  const writeReviewForm = document.getElementById("writeReviewForm");
+  if (writeReviewForm) {
+    writeReviewForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const ratingVal = parseFloat(document.getElementById("reviewRating")?.value.trim() || "0");
+      const text = document.getElementById("reviewText")?.value.trim() || "";
+      if (isNaN(ratingVal) || ratingVal < 0 || ratingVal > 5) { alert("La valoración debe ser un número entre 0 y 5."); return; }
+      if (text.length < 3) { alert("La reseña es muy corta."); return; }
+      // actualizar "Mis reseñas" si existe
+      const userReviewPlaceholder = document.getElementById("user-review");
+      if (userReviewPlaceholder) userReviewPlaceholder.textContent = `${nombre}: ${text} (${ratingVal} estrellas)`;
+      mostrarReseñaEnTarjeta(nombre || usuario || "Invitado", ratingVal, text);
+      alert("Reseña publicada.");
+      const modalEl = document.getElementById("writeReviewModal");
+      if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+    });
+  }
 
-    if (nueva !== confirmar) {
-      alert("Las contraseñas nuevas no coinciden.");
-      return;
-    }
-
-    passwordActual = nueva;
-    alert("Tu contraseña se ha cambiado exitosamente.");
-
-    bootstrap.Modal.getInstance(document.getElementById("changePasswordModal")).hide();
-    changePasswordForm.reset();
-  });
-
-  // ============================
-  // BLOQUEAR MODAL DE RESEÑA SI NO HAY CUENTA
-  // ============================
-  document.getElementById("writeReviewModal")
-    .addEventListener("show.bs.modal", (e) => {
+  // Evitar abrir modal de reseña si no hay cuenta (botón que abre modal)
+  const triggerWriteReview = document.querySelector("[data-bs-target='#writeReviewModal']");
+  if (triggerWriteReview) {
+    triggerWriteReview.addEventListener("click", (e) => {
       if (!usuario || usuario.trim() === "") {
         e.preventDefault();
         alert("Debes crear una cuenta e iniciar sesión para escribir una reseña.");
       }
     });
+  }
 
-  // ============================
-  // AUTOFILL NOMBRE AL ABRIR
-  // ============================
-  document.getElementById("writeReviewModal")
-    .addEventListener("shown.bs.modal", () => {
-      document.getElementById("reviewName").value = nombre || "Invitado";
+  window.loadPage = window.loadPage || function(page) {
+    // si no has implementado inyección, evita romper todo:
+    console.warn("loadPage no implementada. Pide al dev que agregue la inyección de mains.");
+  };
+
+  // agrega listeners al sidebar para cargar páginas (si existen)
+  const sidebarLinks = document.querySelectorAll("#sidebarLinks a[data-page]");
+  sidebarLinks.forEach(a => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const page = a.dataset.page;
+      // marcar activo visualmente
+      sidebarLinks.forEach(x => x.classList.remove("active"));
+      a.classList.add("active");
+      if (typeof loadPage === "function") loadPage(page);
     });
-
-  // ============================
-  // UTILIDADES: AVATAR Y ESTRELLAS
-  // ============================
-  function obtenerAvatar() {
-    if (foto && foto.trim() !== "") {
-      return `<img src="${foto}" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">`;
-    }
-    const inicial = (nombre || "U").charAt(0).toUpperCase();
-    return `<div class="rounded-circle bg-primary me-3 text-center text-light fs-1 fw-medium" style="width: 50px; height: 50px;">${inicial}</div>`;
-  }
-
-  function generarEstrellas(valor) {
-    let html = "";
-    const entero = Math.floor(valor);
-    const decimal = valor - entero;
-
-    for (let i = 0; i < entero; i++) html += `<i class="bi bi-star-fill text-warning"></i>`;
-    if (decimal >= 0.5) html += `<i class="bi bi-star-half text-warning"></i>`;
-
-    const faltan = 5 - Math.ceil(valor);
-    for (let i = 0; i < faltan; i++) html += `<i class="bi bi-star text-warning"></i>`;
-
-    return html;
-  }
-
-  // ============================
-  // MOSTRAR RESEÑA EN TARJETA
-  // ============================
-  function mostrarReseñaEnTarjeta(nombre, rating, texto) {
-    const card = document.getElementById("userReviewCard");
-    const avatar = obtenerAvatar();
-    const estrellas = generarEstrellas(parseFloat(rating));
-
-    card.innerHTML = `
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-
-            <div class="d-flex align-items-center mb-2 w-100">
-              ${avatar}
-              <h5 class="card-title mb-0">${nombre}<br>
-                <span class="text-muted" style="font-size: 1.2rem;">${rating}</span>
-                ${estrellas}
-              </h5>
-            </div>
-
-            <p class="card-text">${texto}</p>
-
-          </div>
-        </div>
-      </div>
-    `;
-
-    card.classList.remove("d-none");
-    document.getElementById("noReviewMsg").classList.add("d-none");
-  }
-
-  function mostrarReseñaEnTarjeta(nombre, rating, texto) {
-
-  const card = document.getElementById("userReviewCard");
-  const avatar = obtenerAvatar();
-  const estrellas = generarEstrellas(parseFloat(rating));
-
-  card.innerHTML = `
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-
-          <div class="d-flex align-items-center mb-2 w-100">
-            ${avatar}
-            <h5 class="card-title mb-0">${nombre}<br>
-              <span class="text-muted" style="font-size: 1.2rem;">${rating}</span>
-              ${estrellas}
-            </h5>
-          </div>
-
-          <p class="card-text">${texto}</p>
-
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Mostrar tarjeta, ocultar mensaje de "sin reseñas"
-  card.classList.remove("d-none");
-  document.getElementById("noReviewMsg").classList.add("d-none");
-}
-
-
+  });
 
   // --- DYNAMIC CONTENT LOADING ---
 
   const footerHTML = `
-    <footer class="py-5 bg-dark text-white mt-auto border-top">
+    <footer class="py-5 bg-dark text-white mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-3">
