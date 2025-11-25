@@ -20,11 +20,11 @@ Toda la aplicación funciona dentro de un solo archivo **index.html** que carga 
   - Registro  
   - Login visual  
   - Edición de perfil y foto  
-  - Estado persistente en la interfaz  
+  - Estado del usuario reflejado en la interfaz  
 - **Publicación de reseñas dentro de la página.**
-- **Modo oscuro (título + switch, actualmente activado pero marcado como función no final).**
+- **Modo oscuro (switch incluido, función no final).**
 - **Bootstrap Icons** para iconografía limpia.
-- **Uso de imágenes y secciones completas con información, tarjetas, sliders y contenido educativo.**
+- **Contenido visual con tarjetas, imágenes y secciones organizadas.**
 
 ---
 
@@ -35,43 +35,44 @@ Toda la aplicación funciona dentro de un solo archivo **index.html** que carga 
 - **Bootstrap Icons**
 - **JavaScript Vanilla (código propio para toda la lógica del sitio)**
 
-No se requiere backend ni instalación adicional para funcionar.
-
 ---
 
 ## 📁 Estructura del proyecto
 
-El proyecto solo necesita:
-
-Todo el HTML, CSS interno, funciones JavaScript y contenido dinámico están incluidos dentro de `index.html`.
+Todo está integrado dentro del propio `index.html`.
 
 ---
 
 ## ⚙️ Funciones implementadas con JavaScript
 
-- Carga dinámica de secciones usando plantillas HTML dentro del propio JS.
-- Gestión visual del estado del usuario.
-- Manejo de foto de perfil (FileReader).
-- Validación básica: formularios, contraseñas, reseñas.
-- Renderizado de estrellas y tarjetas de reseñas.
-- Actualización de avatar según el nombre o la foto.
-- Mostrar/ocultar elementos del sidebar según login/logout.
-- Manejo correcto de modales y cierres.
+- Carga dinámica de las secciones.
+- Gestión visual del usuario (login, logout, edición de perfil).
+- Cambio de imagen de perfil con FileReader.
+- Validación de formularios.
+- Renderizado de reseñas y estrellas.
+- Actualización del avatar según foto o iniciales.
+- Control de visibilidad del sidebar según el estado del usuario.
+- Manejo general de modales.
 
 ---
 
 ## 🎯 Objetivo del proyecto
 
-Ofrecer una **guía moderna, visual, educativa y fácil de navegar** sobre Cuzco, integrando un diseño limpio con funciones interactivas. El proyecto sirve como base para expandirse a un sitio real con backend en el futuro.
+El objetivo del proyecto es **mostrar información sobre Cuzco de forma clara, visual y ordenada**, combinando diseño moderno con secciones interactivas para una navegación sencilla.
 
 ---
 
 ## ▶️ Cómo ejecutarlo
 
-1. Descarga el proyecto.
-2. Abre `index.html` en tu navegador.
-3. No requiere instalación ni servidor.
+1. Descarga el proyecto.  
+2. Abre `index.html` en tu navegador.  
+
+No requiere instalación ni servidor.
 
 ---
 
-Si quieres, te hago otra versión más profesional, una más minimalista o una pensada para GitHub Pages.
+## 🌐 Versión en línea
+
+Disponible también en:
+
+**https://josuer13.github.io/guiacuzco/**
