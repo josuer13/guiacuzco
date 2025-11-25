@@ -1,4 +1,4 @@
-# Guía Cuzco
+# Guía Cuzco V1.0
 
 Guía Cuzco es una página web informativa y dinámica hecha en **HTML**, **Bootstrap 5** y **JavaScript propio**. El sitio muestra contenido sobre Cuzco: sitios turísticos, platos típicos, historia, cultura y una sección visual para publicar reseñas.
 
